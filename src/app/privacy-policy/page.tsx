@@ -1,7 +1,7 @@
-"use client";
-import { SidebarProvider } from "../../components/ui/sidebar";
-import { SettingsLayout } from "../../layouts/settings-layout";
-import { PrivacyPolicy } from "../../components/pages/settings-layout/privacy-policy";
+'use client';
+import { SidebarProvider } from '../../components/ui/sidebar';
+import { SettingsLayout } from '../../layouts/settings-layout';
+import { PrivacyPolicy } from '../../components/pages/settings-layout/privacy-policy';
 
 export default function PrivacyPolicyPage() {
   return (
@@ -12,4 +12,3 @@ export default function PrivacyPolicyPage() {
     </SidebarProvider>
   );
 }
-

@@ -21,7 +21,7 @@ export const History = () => {
                   Plan a week-long trip to Paris with iconic landmarks and local
                   cuisine.
                 </span>
-                  <Ellipsis className="size-4 hidden group-hover:flex transition-all cursor-pointer" />
+                <Ellipsis className="size-4 hidden group-hover:flex transition-all cursor-pointer" />
               </div>
             </div>
             <div className="group">

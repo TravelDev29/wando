@@ -19,5 +19,5 @@ export const useFeedbackModal = () => {
   };
 };
 
-// Default export to prevent Next.js from treating this as a page component
+// Named export to prevent Next.js from treating this as a page component
 export default null;

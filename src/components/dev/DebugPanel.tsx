@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { logger } from '@/lib/logger';
@@ -30,10 +30,10 @@ export function DebugPanel() {
       const params = new URLSearchParams();
       if (selectedLevel) params.set('level', selectedLevel);
       params.set('limit', '100');
-      
+
       const response = await fetch(`/api/_logs?${params}`);
       const data = await response.json();
-      
+
       setLogs(data.logs || []);
       setStats(data.stats || { total: 0, byLevel: {} });
     } catch (error) {
@@ -137,7 +137,7 @@ ${JSON.stringify(log.context, null, 2)}
       <div className="p-3 space-y-3">
         {/* Stats */}
         <div className="text-xs text-gray-600">
-          Total: {stats.total} | 
+          Total: {stats.total} |
           {Object.entries(stats.byLevel).map(([level, count]) => (
             <span key={level} className="ml-2">
               {level}: {count}
@@ -149,7 +149,7 @@ ${JSON.stringify(log.context, null, 2)}
         <div>
           <select
             value={selectedLevel}
-            onChange={(e) => setSelectedLevel(e.target.value)}
+            onChange={e => setSelectedLevel(e.target.value)}
             className="w-full text-xs border border-gray-300 rounded px-2 py-1"
           >
             <option value="">All Levels</option>
@@ -163,11 +163,15 @@ ${JSON.stringify(log.context, null, 2)}
         {/* Last Error */}
         {lastError && (
           <div className="bg-red-50 border border-red-200 rounded p-2">
-            <div className="text-xs font-medium text-red-800 mb-1">Last Error</div>
+            <div className="text-xs font-medium text-red-800 mb-1">
+              Last Error
+            </div>
             <div className="text-xs text-red-700 mb-2">{lastError.message}</div>
             <div className="flex space-x-1">
               <button
-                onClick={() => copyToClipboard(JSON.stringify(lastError, null, 2))}
+                onClick={() =>
+                  copyToClipboard(JSON.stringify(lastError, null, 2))
+                }
                 className="text-xs px-2 py-1 bg-red-100 hover:bg-red-200 text-red-800 rounded"
               >
                 Copy
@@ -184,22 +188,28 @@ ${JSON.stringify(log.context, null, 2)}
 
         {/* Logs List */}
         <div className="max-h-48 overflow-y-auto">
-          {logs.slice(-10).reverse().map((log, index) => (
-            <div key={index} className="text-xs border-b border-gray-100 py-1">
-              <div className="flex items-center justify-between">
-                <span className={`font-medium ${getLevelColor(log.level)}`}>
-                  {log.level.toUpperCase()}
-                </span>
-                <span className="text-gray-500">
-                  {new Date(log.timestamp).toLocaleTimeString()}
-                </span>
+          {logs
+            .slice(-10)
+            .reverse()
+            .map((log, index) => (
+              <div
+                key={index}
+                className="text-xs border-b border-gray-100 py-1"
+              >
+                <div className="flex items-center justify-between">
+                  <span className={`font-medium ${getLevelColor(log.level)}`}>
+                    {log.level.toUpperCase()}
+                  </span>
+                  <span className="text-gray-500">
+                    {new Date(log.timestamp).toLocaleTimeString()}
+                  </span>
+                </div>
+                <div className="text-gray-700 truncate">{log.message}</div>
+                {log.requestId && (
+                  <div className="text-gray-500">ID: {log.requestId}</div>
+                )}
               </div>
-              <div className="text-gray-700 truncate">{log.message}</div>
-              {log.requestId && (
-                <div className="text-gray-500">ID: {log.requestId}</div>
-              )}
-            </div>
-          ))}
+            ))}
         </div>
       </div>
     </div>

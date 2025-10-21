@@ -74,7 +74,7 @@ export const LoginForm = () => {
                 <div className="relative">
                   <Input
                     placeholder="enter your password eg. Password"
-                    type={showPassword ? "text" : "password"}
+                    type={showPassword ? 'text' : 'password'}
                     {...field}
                   />
                   <Button
@@ -126,20 +126,23 @@ export const LoginForm = () => {
         <span className="w-full border-t border-foreground/10"></span>
       </div>
 
-
       <div className="flex gap-4">
         <Button variant="secondary" className="flex-1">
           <img src="/images/google-logo.svg" alt="Google" className="w-4 h-4" />
           Google
         </Button>
         <Button variant="secondary" className="flex-1">
-          <img src="/images/apple-logo.svg" alt="Apple" className="w-4 h-4 invert dark:brightness-0" />
+          <img
+            src="/images/apple-logo.svg"
+            alt="Apple"
+            className="w-4 h-4 invert dark:brightness-0"
+          />
           Apple
         </Button>
       </div>
 
       <p className="text-center text-sm text-muted-foreground">
-        Don't have an account?{' '}
+        Don&apos;t have an account?{' '}
         <Link href="/sign-up" className="text-foreground">
           Sign Up
         </Link>

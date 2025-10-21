@@ -7,6 +7,6 @@ interface ChatContextType {
   clearMessages: () => void;
 }
 
-export const ChatContext = createContext<ChatContextType | undefined>(undefined);
-
-
+export const ChatContext = createContext<ChatContextType | undefined>(
+  undefined
+);

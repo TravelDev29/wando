@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import { cn } from '@/lib/utils';
 import {
@@ -27,8 +27,10 @@ export const CustomDrawer = ({
   onOpenChange,
   footer,
 }: CustomDrawerProps) => {
-  const isMobile = typeof window !== "undefined" && window.matchMedia("(max-width: 768px)").matches;
-  
+  const isMobile =
+    typeof window !== 'undefined' &&
+    window.matchMedia('(max-width: 768px)').matches;
+
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent
@@ -51,7 +53,7 @@ export const CustomDrawer = ({
           <div className="flex-1 overflow-y-auto pb-4">{children}</div>
 
           {footer && (
-            <SheetFooter className='pt-4 border-t-1'>{footer}</SheetFooter>
+            <SheetFooter className="pt-4 border-t-1">{footer}</SheetFooter>
           )}
         </div>
       </SheetContent>

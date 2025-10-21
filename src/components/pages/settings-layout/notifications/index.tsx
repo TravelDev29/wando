@@ -64,8 +64,8 @@ const initialNotifications = [
 export const Notifications = () => {
   const [notifications, setNotifications] = useState(initialNotifications);
   const changeNotification = (label: string, value: boolean) => {
-    const updatedNotifications = notifications.map((n) =>
-      n.label === label ? { ...n, value } : n,
+    const updatedNotifications = notifications.map(n =>
+      n.label === label ? { ...n, value } : n
     );
     setNotifications(updatedNotifications);
   };
@@ -75,7 +75,7 @@ export const Notifications = () => {
         title="Notifications"
         description="Choose when and how we contact you about your trips"
       />
-      {notifications.map((notification) => (
+      {notifications.map(notification => (
         <div key={notification.label} className="flex flex-col">
           <div className="flex justify-between items-center">
             <div className="flex flex-col gap-1">
@@ -92,7 +92,7 @@ export const Notifications = () => {
               id={notification.label}
               disabled={notification.disabled}
               checked={notification.value}
-              onCheckedChange={(v) => {
+              onCheckedChange={v => {
                 changeNotification(notification.label, v);
               }}
             />

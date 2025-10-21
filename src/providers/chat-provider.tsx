@@ -7,7 +7,7 @@ export function ChatProvider({ children }: { children: ReactNode }) {
   const [messages, setMessages] = useState<Message[]>([]);
 
   const addMessage = (message: Message) => {
-    setMessages((prevMessages) => [...prevMessages, message]);
+    setMessages(prevMessages => [...prevMessages, message]);
   };
 
   const clearMessages = () => {

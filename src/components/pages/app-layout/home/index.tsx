@@ -10,8 +10,8 @@ import {
 import { useAssistantMessages } from '@/hooks/app-layout/home/use-assistant-message';
 import { AllFlightsDrawer } from './partials/all-flights-drawer';
 import { AllAccomodationDrawer } from './partials/all-accommodation-drawer';
-import { TextAnimate } from "@/components/magicui/text-animate";  
-import { BlurFade } from "@/components/magicui/blur-fade";
+import { TextAnimate } from '@/components/magicui/text-animate';
+import { BlurFade } from '@/components/magicui/blur-fade';
 
 export const Home = () => {
   const { messages, addMessage, clearMessages } = useChat();
@@ -26,7 +26,7 @@ export const Home = () => {
   useEffect(() => {
     if (messages.length > 0 && messages[messages.length - 1].role === 'user') {
       const timer = setTimeout(() => {
-        assistantMessages.forEach((message) => addMessage(message));
+        assistantMessages.forEach(message => addMessage(message));
       }, 2000);
 
       return () => clearTimeout(timer);
@@ -61,14 +61,25 @@ export const Home = () => {
             />
           </BlurFade>
           <div className="flex flex-col w-full items-center gap-2 pt-4 pb-7 text-center">
-            <TextAnimate animation="blurInUp" delay={0.5} by="character" once as="h1" className='leading-8 font-normal'>
+            <TextAnimate
+              animation="blurInUp"
+              delay={0.5}
+              by="character"
+              once
+              as="h1"
+              className="leading-8 font-normal"
+            >
               Ready to explore the world?
             </TextAnimate>
 
-            <TextAnimate animation="blurIn" delay={0.8} as="p" className='leading-6'>
-              Let's plan your dream trip! ✨
+            <TextAnimate
+              animation="blurIn"
+              delay={0.8}
+              as="p"
+              className="leading-6"
+            >
+              Let&apos;s plan your dream trip! ✨
             </TextAnimate>
-            
           </div>
 
           {/* <div className="flex flex-col w-full max-w-[752px] gap-2 pt-4 pb-7 text-center">

@@ -36,11 +36,11 @@ export const ChangePasswordForm = () => {
     useState<boolean>(false);
 
   const toggleCurrentPasswordVisibility = () =>
-    setIsCurrentPasswordVisible((prevState) => !prevState);
+    setIsCurrentPasswordVisible(prevState => !prevState);
   const toggleNewPasswordVisibility = () =>
-    setIsNewPasswordVisible((prevState) => !prevState);
+    setIsNewPasswordVisible(prevState => !prevState);
   const toggleVerifyNewPasswordVisibility = () =>
-    setIsVerifyNewPasswordVisible((prevState) => !prevState);
+    setIsVerifyNewPasswordVisible(prevState => !prevState);
 
   const onSubmit = (values: z.infer<typeof changePasswordSchema>) => {
     setLoading(true);
@@ -56,7 +56,7 @@ export const ChangePasswordForm = () => {
     return () => {
       form.reset();
     };
-  }, []);
+  }, [form]);
 
   return (
     <Form {...form}>

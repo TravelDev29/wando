@@ -13,7 +13,7 @@ export const PrivacyPolicy = () => {
           Last Updated: 05.13.2025
         </span>
         <span className="text-sm text-foreground/60 leading-5 font-normal">
-          Travel Planner ("we," "our," or "us") respects your privacy. This
+          Travel Planner (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) respects your privacy. This
           policy explains how we collect, use, and protect your information when
           you use our AI travel planning templates and design assets.
         </span>

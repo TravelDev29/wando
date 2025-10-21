@@ -5,9 +5,5 @@ interface AuthLayoutProps {
 }
 
 export const AuthLayout: React.FC<AuthLayoutProps> = ({ children }) => {
-  return (
-    <div className="min-h-svh bg-background">
-      {children}
-    </div>
-  );
+  return <div className="min-h-svh bg-background">{children}</div>;
 };

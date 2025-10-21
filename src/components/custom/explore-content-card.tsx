@@ -22,7 +22,7 @@ export const ExploreContentCard = ({
     textColor: string;
     darkTextColor: string;
   }[];
-  footer?: React.ReactNode
+  footer?: React.ReactNode;
 }) => {
   return (
     <div className="flex flex-col items-center sm:flex-row justify-center sm:justify-start gap-3 py-6 px-0 sm:px-6 rounded-lg bg-card shadow-shadow-2 backdrop-blur-md">
@@ -41,7 +41,7 @@ export const ExploreContentCard = ({
           </span>
         </div>
         <div className="flex gap-2 flex-wrap">
-          {tags.map((tag) => (
+          {tags.map(tag => (
             <Tag
               key={tag.text}
               small={true}

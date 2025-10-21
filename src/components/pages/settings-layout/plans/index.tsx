@@ -19,12 +19,19 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 import { useState } from 'react';
 
 export const Plans = () => {
-  const [billingPeriod, setBillingPeriod] = useState<'annual' | 'monthly'>('annual');
-  
+  const [billingPeriod, setBillingPeriod] = useState<'annual' | 'monthly'>(
+    'annual'
+  );
+
   return (
     <TooltipProvider>
       <ContentHeader
@@ -32,7 +39,12 @@ export const Plans = () => {
         description="Unlock more AI trips, priority support, and premium features."
       />
       <div className="flex flex-col gap-9">
-        <Tabs value={billingPeriod} onValueChange={(value) => setBillingPeriod(value as 'annual' | 'monthly')}>
+        <Tabs
+          value={billingPeriod}
+          onValueChange={value =>
+            setBillingPeriod(value as 'annual' | 'monthly')
+          }
+        >
           <TabsList className="rounded-full p-0.5">
             <TabsTrigger
               value="annual"
@@ -61,7 +73,7 @@ export const Plans = () => {
               Compare all features
             </span>
             <span className="text-base text-muted-foreground leading-5 font-medium">
-              Find your perfect fit – whether you're a casual traveler or a
+              Find your perfect fit – whether you&apos;re a casual traveler or a
               power user.
             </span>
           </div>
@@ -83,7 +95,7 @@ export const Plans = () => {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {tableData.map((item) => (
+              {tableData.map(item => (
                 <TableRow key={item.id}>
                   <TableCell>{item.feature}</TableCell>
                   <TableCell>{item.free}</TableCell>
@@ -182,8 +194,9 @@ const tableData = [
           </div>
         </TooltipTrigger>
         <TooltipContent>
-            Export your travel plans in various formats. Free plan includes watermarked PDFs, 
-            while paid plans offer clean exports in PDF, Excel, and other formats.
+          Export your travel plans in various formats. Free plan includes
+          watermarked PDFs, while paid plans offer clean exports in PDF, Excel,
+          and other formats.
         </TooltipContent>
       </Tooltip>
     ),
@@ -208,8 +221,9 @@ const tableData = [
           </div>
         </TooltipTrigger>
         <TooltipContent>
-            Generate AI-powered visual simulations of your travel destinations. 
-            See how your trip might look before you go with realistic photo previews.
+          Generate AI-powered visual simulations of your travel destinations.
+          See how your trip might look before you go with realistic photo
+          previews.
         </TooltipContent>
       </Tooltip>
     ),
@@ -239,8 +253,8 @@ const tableData = [
           </div>
         </TooltipTrigger>
         <TooltipContent>
-            Work together with your team on travel planning. Share itineraries, 
-            collaborate on bookings, and manage group trips efficiently.
+          Work together with your team on travel planning. Share itineraries,
+          collaborate on bookings, and manage group trips efficiently.
         </TooltipContent>
       </Tooltip>
     ),
@@ -266,8 +280,8 @@ const tableData = [
           </div>
         </TooltipTrigger>
         <TooltipContent>
-            Train AI models on your specific travel preferences and company data. 
-            Get personalized recommendations that match your unique requirements.
+          Train AI models on your specific travel preferences and company data.
+          Get personalized recommendations that match your unique requirements.
         </TooltipContent>
       </Tooltip>
     ),
@@ -288,8 +302,8 @@ const tableData = [
           </div>
         </TooltipTrigger>
         <TooltipContent>
-            Enjoy a clean, distraction-free experience without any advertisements. 
-            Focus on planning your perfect trip without interruptions.
+          Enjoy a clean, distraction-free experience without any advertisements.
+          Focus on planning your perfect trip without interruptions.
         </TooltipContent>
       </Tooltip>
     ),
@@ -310,8 +324,8 @@ const tableData = [
           </div>
         </TooltipTrigger>
         <TooltipContent>
-            Get early access to new features and beta releases. Business users also get 
-            voting power to influence which features we develop next.
+          Get early access to new features and beta releases. Business users
+          also get voting power to influence which features we develop next.
         </TooltipContent>
       </Tooltip>
     ),

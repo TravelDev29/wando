@@ -1,7 +1,7 @@
-"use client";
-import { SidebarProvider } from "../../components/ui/sidebar";
-import { SettingsLayout } from "../../layouts/settings-layout";
-import { Updates } from "../../components/pages/settings-layout/updates";
+'use client';
+import { SidebarProvider } from '../../components/ui/sidebar';
+import { SettingsLayout } from '../../layouts/settings-layout';
+import { Updates } from '../../components/pages/settings-layout/updates';
 
 export default function UpdatesPage() {
   return (
@@ -12,4 +12,3 @@ export default function UpdatesPage() {
     </SidebarProvider>
   );
 }
-

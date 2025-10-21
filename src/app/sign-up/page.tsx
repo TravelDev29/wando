@@ -1,6 +1,6 @@
-"use client";
-import { AuthLayout } from "../../layouts/auth-layout";
-import { SignUp } from "../../components/pages/auth-layout/sign-up";
+'use client';
+import { AuthLayout } from '../../layouts/auth-layout';
+import { SignUp } from '../../components/pages/auth-layout/sign-up';
 
 export default function SignUpPage() {
   return (
@@ -9,4 +9,3 @@ export default function SignUpPage() {
     </AuthLayout>
   );
 }
-

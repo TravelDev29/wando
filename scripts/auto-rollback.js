@@ -10,21 +10,27 @@ const fs = require('fs');
 const path = require('path');
 
 // Configure Git to be quiet
-const GIT_OPTIONS = { 
+const GIT_OPTIONS = {
   encoding: 'utf8',
-  stdio: 'pipe'
+  stdio: 'pipe',
 };
 
 // Get the most recent auto checkpoint tag
 function getLatestCheckpoint() {
   try {
-    const tags = execSync('git tag -l "*auto" --sort=-version:refname', GIT_OPTIONS);
-    const autoTags = tags.trim().split('\n').filter(tag => tag.includes('-auto'));
-    
+    const tags = execSync(
+      'git tag -l "*auto" --sort=-version:refname',
+      GIT_OPTIONS
+    );
+    const autoTags = tags
+      .trim()
+      .split('\n')
+      .filter(tag => tag.includes('-auto'));
+
     if (autoTags.length === 0) {
       throw new Error('No auto checkpoints found');
     }
-    
+
     return autoTags[0]; // Most recent tag
   } catch (error) {
     throw new Error(`Failed to find auto checkpoints: ${error.message}`);
@@ -35,43 +41,51 @@ function getLatestCheckpoint() {
 function validateBuild() {
   try {
     console.log('🔍 Validating build...');
-    const result = execSync('npm run build', { 
-      encoding: 'utf8', 
+    const result = execSync('npm run build', {
+      encoding: 'utf8',
       stdio: 'pipe',
-      cwd: process.cwd()
+      cwd: process.cwd(),
     });
-    
+
     // Check if build actually failed (not just linting warnings)
     const output = result.toString();
     const hasCompilationSuccess = output.includes('✓ Compiled successfully');
-    const hasCompilationErrors = output.includes('Failed to compile') && 
-                                (output.includes('Module not found') || 
-                                 output.includes('Cannot find module') ||
-                                 output.includes('Type error:') ||
-                                 output.includes('Syntax error'));
-    
+    const hasCompilationErrors =
+      output.includes('Failed to compile') &&
+      (output.includes('Module not found') ||
+        output.includes('Cannot find module') ||
+        output.includes('Type error:') ||
+        output.includes('Syntax error'));
+
     if (hasCompilationSuccess && !hasCompilationErrors) {
-      console.log('✅ Build validation successful (linting warnings are acceptable)');
+      console.log(
+        '✅ Build validation successful (linting warnings are acceptable)'
+      );
       return true;
     } else if (hasCompilationErrors) {
       console.log('❌ Build validation failed - compilation errors detected');
       return false;
     } else {
-      console.log('❌ Build validation failed - no successful compilation detected');
+      console.log(
+        '❌ Build validation failed - no successful compilation detected'
+      );
       return false;
     }
   } catch (error) {
     // Even if execSync throws, check if it's just linting errors
     const output = error.stdout ? error.stdout.toString() : '';
     const hasCompilationSuccess = output.includes('✓ Compiled successfully');
-    const hasCompilationErrors = output.includes('Failed to compile') && 
-                                (output.includes('Module not found') || 
-                                 output.includes('Cannot find module') ||
-                                 output.includes('Type error:') ||
-                                 output.includes('Syntax error'));
-    
+    const hasCompilationErrors =
+      output.includes('Failed to compile') &&
+      (output.includes('Module not found') ||
+        output.includes('Cannot find module') ||
+        output.includes('Type error:') ||
+        output.includes('Syntax error'));
+
     if (hasCompilationSuccess && !hasCompilationErrors) {
-      console.log('✅ Build validation successful (linting warnings are acceptable)');
+      console.log(
+        '✅ Build validation successful (linting warnings are acceptable)'
+      );
       return true;
     } else {
       console.log('❌ Build validation failed');
@@ -84,13 +98,13 @@ function validateBuild() {
 function rollbackToCheckpoint(tagName) {
   try {
     console.log(`⏪ Rolling back to ${tagName}...`);
-    
+
     // Reset to the checkpoint
-    execSync(`git checkout ${tagName}`, { 
-      encoding: 'utf8', 
-      stdio: 'inherit' 
+    execSync(`git checkout ${tagName}`, {
+      encoding: 'utf8',
+      stdio: 'inherit',
     });
-    
+
     console.log(`✅ Successfully rolled back to ${tagName}`);
     return true;
   } catch (error) {
@@ -102,9 +116,14 @@ function rollbackToCheckpoint(tagName) {
 // Log rollback to changelog
 function logRollback(tagName, reason) {
   try {
-    const changelogPath = path.join(__dirname, '..', 'docs', 'CHANGELOG_CHECKPOINTS.md');
+    const changelogPath = path.join(
+      __dirname,
+      '..',
+      'docs',
+      'CHANGELOG_CHECKPOINTS.md'
+    );
     let changelog = fs.readFileSync(changelogPath, 'utf8');
-    
+
     const timestamp = new Date().toLocaleString('en-US', {
       timeZone: 'America/New_York',
       year: 'numeric',
@@ -112,23 +131,26 @@ function logRollback(tagName, reason) {
       day: '2-digit',
       hour: '2-digit',
       minute: '2-digit',
-      second: '2-digit'
+      second: '2-digit',
     });
-    
+
     const rollbackEntry = `## ROLLBACK (${timestamp})
 - **Rolled back to**: ${tagName}
 - **Reason**: ${reason}
 - **Current state**: \`git checkout ${tagName}\`
 
 `;
-    
+
     // Insert rollback entry at the top of checkpoints section
     const insertPoint = changelog.indexOf('## Checkpoints');
     if (insertPoint !== -1) {
       const nextLineIndex = changelog.indexOf('\n', insertPoint);
-      changelog = changelog.slice(0, nextLineIndex + 1) + rollbackEntry + changelog.slice(nextLineIndex + 1);
+      changelog =
+        changelog.slice(0, nextLineIndex + 1) +
+        rollbackEntry +
+        changelog.slice(nextLineIndex + 1);
     }
-    
+
     fs.writeFileSync(changelogPath, changelog);
     console.log('📝 Rollback logged to changelog');
   } catch (error) {
@@ -140,28 +162,27 @@ function logRollback(tagName, reason) {
 function performRollback(reason = 'Build validation failed') {
   try {
     console.log('🚀 Starting auto rollback process...');
-    
+
     // Get latest checkpoint
     const latestTag = getLatestCheckpoint();
     console.log(`📍 Latest checkpoint: ${latestTag}`);
-    
+
     // Perform rollback
     const rollbackSuccess = rollbackToCheckpoint(latestTag);
-    
+
     if (rollbackSuccess) {
       // Log the rollback
       logRollback(latestTag, reason);
-      
+
       console.log('✅ Auto rollback completed successfully');
       console.log(`📍 Current state: ${latestTag}`);
       console.log('💡 You can now fix issues and create a new checkpoint');
-      
+
       return { success: true, tagName: latestTag };
     } else {
       console.error('❌ Auto rollback failed');
       return { success: false, error: 'Rollback operation failed' };
     }
-    
   } catch (error) {
     console.error('❌ Auto rollback error:', error.message);
     return { success: false, error: error.message };
@@ -172,10 +193,10 @@ function performRollback(reason = 'Build validation failed') {
 function validateAndRollback() {
   try {
     console.log('🔍 Validating current state...');
-    
+
     // First, validate the build
     const buildValid = validateBuild();
-    
+
     if (buildValid) {
       console.log('✅ Current state is valid. No rollback needed.');
       return { success: true, rollback: false };
@@ -183,7 +204,6 @@ function validateAndRollback() {
       console.log('❌ Build failed. Initiating automatic rollback...');
       return performRollback('Build validation failed');
     }
-    
   } catch (error) {
     console.error('❌ Validation error:', error.message);
     return performRollback(`Validation error: ${error.message}`);
@@ -191,17 +211,17 @@ function validateAndRollback() {
 }
 
 // Export functions
-module.exports = { 
-  validateAndRollback, 
-  performRollback, 
+module.exports = {
+  validateAndRollback,
+  performRollback,
   getLatestCheckpoint,
-  validateBuild 
+  validateBuild,
 };
 
 // If run directly
 if (require.main === module) {
   const reason = process.argv[2] || 'Manual rollback';
-  
+
   if (process.argv.includes('--validate')) {
     validateAndRollback();
   } else {

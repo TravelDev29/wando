@@ -33,7 +33,7 @@ const Explore = () => {
         className="text-sm"
         title={
           <span className="text-base font-medium text-foreground/60 leading-5">
-            This Week's Most-Loved Plans
+            This Week&apos;s Most-Loved Plans
           </span>
         }
         extra={
@@ -234,7 +234,7 @@ const Explore = () => {
             },
           ]}
           footer={
-              <div className="flex items-start gap-2">
+            <div className="flex items-start gap-2">
               <EarthIcon className="size-4 text-foreground/50" />
               <span className="text-sm text-foreground/50 leading-5 font-normal">
                 Charles Bridge → Ruin bars → Thermal baths → $5 meal guide

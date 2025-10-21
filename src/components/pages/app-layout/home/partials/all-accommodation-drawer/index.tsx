@@ -15,7 +15,9 @@ import { hotelData } from '@/temp-data/hotel-data';
 import { HotelCard } from '@/components/custom/hotel-card';
 
 export const AllAccomodationDrawer = () => {
-  const [sortBy, setSortBy] = useState<'breakfast' | 'freeCancellation' | 'ShowAll'>();
+  const [sortBy, setSortBy] = useState<
+    'breakfast' | 'freeCancellation' | 'ShowAll'
+  >();
   const [loadMore, setLoadMore] = useState<number>(5);
 
   const { open, setOpen } = useAllAccomodationDrawer();

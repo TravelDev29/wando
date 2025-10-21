@@ -13,29 +13,29 @@ const pricingData = {
       price: 89,
       period: 'year',
       originalPrice: 108, // 9 * 12
-      savings: 19
+      savings: 19,
     },
     business: {
       price: 149,
       period: 'year',
       originalPrice: 228, // 19 * 12
-      savings: 79
-    }
+      savings: 79,
+    },
   },
   monthly: {
     basic: {
       price: 9,
       period: 'month',
       originalPrice: 9,
-      savings: 0
+      savings: 0,
     },
     business: {
       price: 19,
       period: 'month',
       originalPrice: 19,
-      savings: 0
-    }
-  }
+      savings: 0,
+    },
+  },
 };
 
 export const PlansCards = ({ billingPeriod }: PlansCardsProps) => {

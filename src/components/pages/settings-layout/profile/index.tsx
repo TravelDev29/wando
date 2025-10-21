@@ -3,28 +3,27 @@ import { Divider } from '@/components/custom/divider';
 import { ProfileForm } from './components/profile-form';
 import { Button } from '@/components/ui/button';
 import { ChangePasswordModal } from './components/change-password-modal';
-import { CircleUserRoundIcon, XIcon } from "lucide-react"
+import { CircleUserRoundIcon, XIcon } from 'lucide-react';
 
-import { useFileUpload } from "@/hooks/use-file-upload"
+import { useFileUpload } from '@/hooks/use-file-upload';
 
 export const Profile = () => {
   const [
     { files, isDragging },
-      {
-        removeFile,
-        openFileDialog,
-        getInputProps,
-        handleDragEnter,
-        handleDragLeave,
-        handleDragOver,
-        handleDrop,
-      },
-    ] = useFileUpload({
-      accept: "image/*",
-    })
+    {
+      removeFile,
+      openFileDialog,
+      getInputProps,
+      handleDragEnter,
+      handleDragLeave,
+      handleDragOver,
+      handleDrop,
+    },
+  ] = useFileUpload({
+    accept: 'image/*',
+  });
 
-    const previewUrl = files[0]?.preview || "/images/avatar-content.jpg"
-
+  const previewUrl = files[0]?.preview || '/images/avatar-content.jpg';
 
   return (
     <>
@@ -54,16 +53,16 @@ export const Profile = () => {
               onDragOver={handleDragOver}
               onDrop={handleDrop}
               data-dragging={isDragging || undefined}
-              aria-label={previewUrl ? "Change image" : "Upload image"}
+              aria-label={previewUrl ? 'Change image' : 'Upload image'}
             >
               {previewUrl ? (
                 <img
                   className="size-full object-cover"
                   src={previewUrl}
-                  alt={files[0]?.file?.name || "Uploaded image"}
+                  alt={files[0]?.file?.name || 'Uploaded image'}
                   width={32}
                   height={32}
-                  style={{ objectFit: "cover" }}
+                  style={{ objectFit: 'cover' }}
                 />
               ) : (
                 <div aria-hidden="true">
@@ -88,10 +87,6 @@ export const Profile = () => {
               tabIndex={-1}
             />
           </div>
-
-         
-
-
         </div>
         <Divider size="large" />
         <ProfileForm />

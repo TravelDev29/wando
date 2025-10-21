@@ -1,6 +1,11 @@
 import { ContentHeader } from '@/components/custom/content-header';
 import { CustomCard } from '@/components/custom/custom-card';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Check } from 'lucide-react';
@@ -34,7 +39,7 @@ export const Usage = () => {
               </div>
               <Progress value={36} />
               <span className="text-xs font-normal leading-4 text-foreground/50">
-                You've used 18 requests out of your 50 monthly quota.
+                You&apos;ve used 18 requests out of your 50 monthly quota.
               </span>
             </CustomCard>
             <CustomCard className="w-full min-w-[320px]">
@@ -48,7 +53,7 @@ export const Usage = () => {
               </div>
               <Progress value={80} />
               <span className="text-xs font-normal leading-4 text-foreground/50">
-                You've used 8 requests out of your 10 monthly quota.
+                You&apos;ve used 8 requests out of your 10 monthly quota.
               </span>
             </CustomCard>
           </div>
@@ -116,7 +121,7 @@ export const Usage = () => {
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="item-1">
                 <AccordionTrigger className="text-foreground/70 text-base font-normal leading-5">
-                  What counts as a "trip generation"?
+                  What counts as a &quot;trip generation&quot;?
                 </AccordionTrigger>
                 <AccordionContent className="text-foreground/60 text-sm font-normal leading-5">
                   Each time you ask the AI to create a new itinerary (even if

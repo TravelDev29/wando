@@ -16,12 +16,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import {
-  Circle,
-  CircleCheck,
-  CircleDashed,
-  Download,
-} from 'lucide-react';
+import { Circle, CircleCheck, CircleDashed, Download } from 'lucide-react';
 
 export const Payouts = () => {
   return (
@@ -41,7 +36,7 @@ export const Payouts = () => {
             Payout Summary
           </span>
           <div className="flex gap-4 overflow-x-auto w-full">
-            <CustomCard className='w-full min-w-[220px]'>
+            <CustomCard className="w-full min-w-[220px]">
               <span className="text-sm font-normal text-foreground/50 leading-5">
                 Available Now
               </span>
@@ -52,7 +47,7 @@ export const Payouts = () => {
                 </span>
               </div>
             </CustomCard>
-            <CustomCard className='w-full min-w-[220px]'>
+            <CustomCard className="w-full min-w-[220px]">
               <span className="text-sm font-normal text-foreground/50 leading-5">
                 Pending
               </span>
@@ -63,7 +58,7 @@ export const Payouts = () => {
                 </span>
               </div>
             </CustomCard>
-            <CustomCard className='w-full min-w-[220px]'>
+            <CustomCard className="w-full min-w-[220px]">
               <span className="text-sm font-normal text-foreground/50 leading-5">
                 Minimum Threshold
               </span>
@@ -93,13 +88,16 @@ export const Payouts = () => {
                   <TableHead className="text-sm font-normal text-foreground/50">
                     Amount
                   </TableHead>
-                  <TableHead colSpan={2} className="text-sm font-normal text-foreground/50">
+                  <TableHead
+                    colSpan={2}
+                    className="text-sm font-normal text-foreground/50"
+                  >
                     Method
                   </TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {payoutHistory.map((invoice) => (
+                {payoutHistory.map(invoice => (
                   <TableRow key={invoice.id}>
                     <TableCell>{invoice.period}</TableCell>
                     <TableCell>{invoice.status}</TableCell>
@@ -112,60 +110,60 @@ export const Payouts = () => {
             </Table>
           </div>
         </div>
-      <div className="flex flex-col gap-4 pt-12 items-center">
-        <span className="text-lg font-medium leading-6 text-foreground">
-          Payout FAQ
-        </span>
-        <div className="flex max-w-[480px] w-full">
-          <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="item-1">
-              <AccordionTrigger className="text-foreground/70 text-base font-normal leading-5">
-                When will my withdrawal arrive?
-              </AccordionTrigger>
-              <AccordionContent className="text-foreground/60 text-sm font-normal leading-5">
-                PayPal = instant, Bank = 3-5 days.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-2">
-              <AccordionTrigger className="text-foreground/70 text-base font-normal leading-5">
-                Why is my money "pending"?
-              </AccordionTrigger>
-              <AccordionContent></AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-3">
-              <AccordionTrigger className="text-foreground/70 text-base font-normal leading-5">
-                Which method has lowest fees?
-              </AccordionTrigger>
-              <AccordionContent></AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-4">
-              <AccordionTrigger className="text-foreground/70 text-base font-normal leading-5">
-                Can I split payments?
-              </AccordionTrigger>
-              <AccordionContent></AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-5">
-              <AccordionTrigger className="text-foreground/70 text-base font-normal leading-5">
-                Why can't I withdraw?
-              </AccordionTrigger>
-              <AccordionContent></AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-6">
-              <AccordionTrigger className="text-foreground/70 text-base font-normal leading-5">
-                Is there a yearly maximum?
-              </AccordionTrigger>
-              <AccordionContent></AccordionContent>
-            </AccordionItem>
-          </Accordion>
+        <div className="flex flex-col gap-4 pt-12 items-center">
+          <span className="text-lg font-medium leading-6 text-foreground">
+            Payout FAQ
+          </span>
+          <div className="flex max-w-[480px] w-full">
+            <Accordion type="single" collapsible className="w-full">
+              <AccordionItem value="item-1">
+                <AccordionTrigger className="text-foreground/70 text-base font-normal leading-5">
+                  When will my withdrawal arrive?
+                </AccordionTrigger>
+                <AccordionContent className="text-foreground/60 text-sm font-normal leading-5">
+                  PayPal = instant, Bank = 3-5 days.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-2">
+                <AccordionTrigger className="text-foreground/70 text-base font-normal leading-5">
+                  Why is my money &quot;pending&quot;?
+                </AccordionTrigger>
+                <AccordionContent></AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-3">
+                <AccordionTrigger className="text-foreground/70 text-base font-normal leading-5">
+                  Which method has lowest fees?
+                </AccordionTrigger>
+                <AccordionContent></AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-4">
+                <AccordionTrigger className="text-foreground/70 text-base font-normal leading-5">
+                  Can I split payments?
+                </AccordionTrigger>
+                <AccordionContent></AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-5">
+                <AccordionTrigger className="text-foreground/70 text-base font-normal leading-5">
+                  Why can&apos;t I withdraw?
+                </AccordionTrigger>
+                <AccordionContent></AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-6">
+                <AccordionTrigger className="text-foreground/70 text-base font-normal leading-5">
+                  Is there a yearly maximum?
+                </AccordionTrigger>
+                <AccordionContent></AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
+          <Button
+            variant="outline"
+            className="text-foreground/70 rounded-full border-input"
+            size="sm"
+          >
+            Need help?
+          </Button>
         </div>
-        <Button
-          variant="outline"
-          className="text-foreground/70 rounded-full border-input"
-          size="sm"
-        >
-          Need help?
-        </Button>
-      </div>
       </div>
     </>
   );

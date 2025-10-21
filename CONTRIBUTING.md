@@ -12,19 +12,24 @@ Thank you for your interest in contributing to Wando! This document provides gui
 ## Development Workflow
 
 ### Branch Naming
+
 Use descriptive branch names with prefixes:
+
 - `feature/description` - For new features
 - `fix/description` - For bug fixes
 - `refactor/description` - For code refactoring
 - `docs/description` - For documentation updates
 
 Examples:
+
 - `feature/user-authentication`
 - `fix/header-styling`
 - `refactor/component-structure`
 
 ### Before Committing
+
 Always run validation before committing:
+
 ```bash
 npm run validate
 ```
@@ -34,6 +39,7 @@ This ensures your code builds successfully and passes all checks.
 ### Creating Pull Requests
 
 1. **Create a checkpoint** before opening a PR:
+
    ```bash
    npm run checkpoint "Description of your changes"
    ```
@@ -47,6 +53,7 @@ This ensures your code builds successfully and passes all checks.
 ### After Merging
 
 1. **Create a checkpoint** after merging to main:
+
    ```bash
    npm run checkpoint "Post-merge: [PR description]"
    ```
@@ -60,21 +67,25 @@ This ensures your code builds successfully and passes all checks.
 ## Code Standards
 
 ### TypeScript
+
 - Use TypeScript for all new code
 - Avoid `any` types - use proper typing
 - Remove unused imports and variables
 
 ### React Components
+
 - Use functional components with hooks
 - Follow the existing component structure
 - Use proper prop types
 
 ### Styling
+
 - Use Tailwind CSS classes
 - Follow the existing design system
 - Ensure responsive design
 
 ### Code Quality
+
 - No console.log statements in production code
 - Remove unused imports
 - Use meaningful variable and function names
@@ -109,6 +120,7 @@ Wando uses an automated checkpoint system to maintain code stability:
 ## Commit Messages
 
 Use clear, descriptive commit messages:
+
 - `feat: add user authentication`
 - `fix: resolve header styling issue`
 - `refactor: consolidate component structure`

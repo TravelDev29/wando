@@ -12,11 +12,15 @@ export const PasswordReset = () => {
         <div className="flex items-center flex-1 w-full justify-center py-24">
           <div className="flex w-full max-w-[380px] flex-col gap-10">
             <header>
-              <img src="/pixipro-logo-small.svg" alt="logo" className="object-cover -ml-[20px]" />
+              <img
+                src="/pixipro-logo-small.svg"
+                alt="logo"
+                className="object-cover -ml-[20px]"
+              />
               <div className="flex flex-col gap-2">
                 <h1>Password Reset</h1>
                 <span className="text-sm text-muted-foreground">
-                  Please enter your email and we'll send you a 4-digit code.
+                  Please enter your email and we&apos;ll send you a 4-digit code.
                 </span>
               </div>
             </header>

@@ -1,8 +1,8 @@
-import { AppLayoutContent } from "@/components/custom/app-layout-content";
-import { StackImages } from "@/components/custom/stack-images";
-import { Button } from "@/components/ui/button";
-import { ArrowUpRight } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { AppLayoutContent } from '@/components/custom/app-layout-content';
+import { StackImages } from '@/components/custom/stack-images';
+import { Button } from '@/components/ui/button';
+import { ArrowUpRight } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 export const NotFound = () => {
   const router = useRouter();
   return (
@@ -22,7 +22,11 @@ export const NotFound = () => {
           Even the best travelers take wrong turns. Let’s get you back on track!
         </span>
         <div className="flex gap-4">
-          <Button variant="default" className="cursor-pointer" onClick={() => router.push('/')}>
+          <Button
+            variant="default"
+            className="cursor-pointer"
+            onClick={() => router.push('/')}
+          >
             Homepage
           </Button>
           <Button variant="secondary" className="cursor-pointer">

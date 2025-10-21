@@ -16,7 +16,6 @@ const passwordResetSchema = z.object({
 });
 
 export const PasswordResetForm = () => {
-
   const form = useForm<z.infer<typeof passwordResetSchema>>({
     resolver: zodResolver(passwordResetSchema),
     defaultValues: {

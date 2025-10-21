@@ -1,9 +1,13 @@
-"use client";
+'use client';
 
 import { useEffect } from 'react';
 import { logClientError } from '@/lib/logger';
 
-export function ErrorCaptureProvider({ children }: { children: React.ReactNode }) {
+export function ErrorCaptureProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   useEffect(() => {
     // Capture unhandled JavaScript errors
     const handleError = (event: ErrorEvent) => {
@@ -31,7 +35,10 @@ export function ErrorCaptureProvider({ children }: { children: React.ReactNode }
     // Cleanup
     return () => {
       window.removeEventListener('error', handleError);
-      window.removeEventListener('unhandledrejection', handleUnhandledRejection);
+      window.removeEventListener(
+        'unhandledrejection',
+        handleUnhandledRejection
+      );
     };
   }, []);
 

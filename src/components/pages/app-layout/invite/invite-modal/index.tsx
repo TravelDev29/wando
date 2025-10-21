@@ -1,14 +1,23 @@
 import { useInviteModal } from '../hooks/use-invite-modal-store';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import {
-  UserRoundPlusIcon
-} from 'lucide-react';
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
+import { UserRoundPlusIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useId, useRef, useState } from 'react';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 import { CheckIcon, CopyIcon } from 'lucide-react';
 
 export const InviteModal = () => {
@@ -18,8 +27,6 @@ export const InviteModal = () => {
   const lastInputRef = useRef<HTMLInputElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const id = useId();
-
-
 
   const handleEmailChange = (index: number, value: string) => {
     const newEmails = [...emails];
@@ -39,18 +46,17 @@ export const InviteModal = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => { 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(emails);
   };
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-    
       <DialogContent
-        onOpenAutoFocus={(e) => {
-          e.preventDefault()
-          lastInputRef.current?.focus()
+        onOpenAutoFocus={e => {
+          e.preventDefault();
+          lastInputRef.current?.focus();
         }}
       >
         <div className="flex flex-col gap-2">
@@ -80,7 +86,7 @@ export const InviteModal = () => {
                     placeholder="hi@yourcompany.com"
                     type="email"
                     value={email}
-                    onChange={(e) => handleEmailChange(index, e.target.value)}
+                    onChange={e => handleEmailChange(index, e.target.value)}
                     ref={index === emails.length - 1 ? lastInputRef : undefined}
                   />
                 ))}
@@ -118,13 +124,13 @@ export const InviteModal = () => {
                   <button
                     onClick={handleCopy}
                     className="text-muted-foreground/80 hover:text-foreground focus-visible:border-ring focus-visible:ring-ring/50 absolute inset-y-0 end-0 flex h-full w-9 items-center justify-center rounded-e-md transition-[color,box-shadow] outline-none focus:z-10 focus-visible:ring-[3px] disabled:pointer-events-none disabled:cursor-not-allowed"
-                    aria-label={copied ? "Copied" : "Copy to clipboard"}
+                    aria-label={copied ? 'Copied' : 'Copy to clipboard'}
                     disabled={copied}
                   >
                     <div
                       className={cn(
-                        "transition-all",
-                        copied ? "scale-100 opacity-100" : "scale-0 opacity-0"
+                        'transition-all',
+                        copied ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
                       )}
                     >
                       <CheckIcon
@@ -135,8 +141,8 @@ export const InviteModal = () => {
                     </div>
                     <div
                       className={cn(
-                        "absolute transition-all",
-                        copied ? "scale-0 opacity-0" : "scale-100 opacity-100"
+                        'absolute transition-all',
+                        copied ? 'scale-0 opacity-0' : 'scale-100 opacity-100'
                       )}
                     >
                       <CopyIcon size={16} aria-hidden="true" />

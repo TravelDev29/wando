@@ -6,11 +6,7 @@
     "checkpoint-workflow": {
       "enabled": true,
       "script": ".cursor/integrations/checkpoint-workflow.js",
-      "triggers": [
-        "post-commit",
-        "file-change",
-        "manual"
-      ],
+      "triggers": ["post-commit", "file-change", "manual"],
       "config": {
         "minFilesChanged": 3,
         "minLinesChanged": 50,
@@ -57,7 +53,7 @@
       "message": "Auto after {summary}",
       "conditions": [
         "multiple_files_changed",
-        "significant_lines_changed", 
+        "significant_lines_changed",
         "refactor_keywords_detected"
       ]
     },
@@ -65,10 +61,7 @@
       "enabled": true,
       "command": "npm run rollback",
       "message": "Build validation failed",
-      "conditions": [
-        "build_validation_failed",
-        "compilation_errors"
-      ]
+      "conditions": ["build_validation_failed", "compilation_errors"]
     }
   }
 }

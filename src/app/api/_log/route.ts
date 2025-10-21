@@ -4,7 +4,10 @@ import { addLog } from '@/lib/log-buffer';
 export async function POST(request: NextRequest) {
   // Block in production for security
   if (process.env.NODE_ENV === 'production') {
-    return NextResponse.json({ error: 'Not available in production' }, { status: 403 });
+    return NextResponse.json(
+      { error: 'Not available in production' },
+      { status: 403 }
+    );
   }
 
   try {

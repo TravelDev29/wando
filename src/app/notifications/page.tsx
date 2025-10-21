@@ -1,7 +1,7 @@
-"use client";
-import { SidebarProvider } from "../../components/ui/sidebar";
-import { SettingsLayout } from "../../layouts/settings-layout";
-import { Notifications } from "../../components/pages/settings-layout/notifications";
+'use client';
+import { SidebarProvider } from '../../components/ui/sidebar';
+import { SettingsLayout } from '../../layouts/settings-layout';
+import { Notifications } from '../../components/pages/settings-layout/notifications';
 
 export default function NotificationsPage() {
   return (
@@ -12,4 +12,3 @@ export default function NotificationsPage() {
     </SidebarProvider>
   );
 }
-

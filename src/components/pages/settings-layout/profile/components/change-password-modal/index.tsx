@@ -7,7 +7,7 @@ export const ChangePasswordModal = () => {
   const { open, setOpen } = useChangePasswordModal();
 
   return (
-    <Modal open={open} size='default' setOpen={setOpen}>
+    <Modal open={open} size="default" setOpen={setOpen}>
       <div className="flex flex-col items-center w-full max-w-[360px] mx-auto">
         <div className="flex pb-4 w-full items-start justify-center">
           <div className="flex bg-card-solid rounded-full w-14 h-14 items-center justify-center">

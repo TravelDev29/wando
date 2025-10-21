@@ -11,24 +11,24 @@ import { Check, Download, Info, X } from 'lucide-react';
 
 export const RecentInvoicesTable = () => {
   return (
-    <div className='border-1 border-border rounded-md'>
+    <div className="border-1 border-border rounded-md">
       <Table>
         <TableHeader>
           <TableRow>
-          <TableHead>Invoice</TableHead>
-          <TableHead>Date</TableHead>
-          <TableHead>Status</TableHead>
-          <TableHead>Invoice</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {recentInvoices.map((invoice) => (
-          <TableRow key={invoice.id}>
-            <TableCell>{invoice.amount}</TableCell>
-            <TableCell>{invoice.date}</TableCell>
-            <TableCell>{invoice.status}</TableCell>
-            <TableCell>{invoice.invoice}</TableCell>
+            <TableHead>Invoice</TableHead>
+            <TableHead>Date</TableHead>
+            <TableHead>Status</TableHead>
+            <TableHead>Invoice</TableHead>
           </TableRow>
+        </TableHeader>
+        <TableBody>
+          {recentInvoices.map(invoice => (
+            <TableRow key={invoice.id}>
+              <TableCell>{invoice.amount}</TableCell>
+              <TableCell>{invoice.date}</TableCell>
+              <TableCell>{invoice.status}</TableCell>
+              <TableCell>{invoice.invoice}</TableCell>
+            </TableRow>
           ))}
         </TableBody>
       </Table>
@@ -43,7 +43,10 @@ const recentInvoices = [
     date: <span className="font-normal text-foreground/70">24th Feb 2025</span>,
     status: (
       <div className="flex flex-row gap-1 items-center">
-        <Tag small className="bg-red-100 text-red-900 dark:bg-red-950 dark:text-red-100 rounded w-fit px-1">
+        <Tag
+          small
+          className="bg-red-100 text-red-900 dark:bg-red-950 dark:text-red-100 rounded w-fit px-1"
+        >
           <div className="flex flex-row gap-1 items-center">
             <X className="size-3.5" />
             <span className="text-xs">Rejected</span>
@@ -62,7 +65,10 @@ const recentInvoices = [
     date: <span className="font-normal text-foreground/70">24th Feb 2025</span>,
     status: (
       <div className="flex flex-row gap-1 items-center">
-        <Tag small className="bg-emerald-900 text-emerald-100 dark:bg-emerald-950 dark:text-emerald-100 rounded-md w-fit">
+        <Tag
+          small
+          className="bg-emerald-900 text-emerald-100 dark:bg-emerald-950 dark:text-emerald-100 rounded-md w-fit"
+        >
           <div className="flex flex-row gap-1 items-center">
             <Check className="size-3.5" />
             <span className="text-xs">Paid</span>
@@ -81,7 +87,10 @@ const recentInvoices = [
     date: <span className="font-normal text-foreground/70">24th Feb 2025</span>,
     status: (
       <div className="flex flex-row gap-1 items-center">
-        <Tag small className="bg-emerald-900 text-emerald-100 dark:bg-emerald-950 dark:text-emerald-100 rounded-md w-fit">
+        <Tag
+          small
+          className="bg-emerald-900 text-emerald-100 dark:bg-emerald-950 dark:text-emerald-100 rounded-md w-fit"
+        >
           <div className="flex flex-row gap-1 items-center">
             <Check className="size-3.5" />
             <span className="text-xs">Paid</span>

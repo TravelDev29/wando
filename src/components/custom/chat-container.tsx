@@ -1,7 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
 import { cn } from '@/lib/utils';
-import { ReactNode, useState, useEffect, Fragment, useRef, useCallback } from 'react';
+import {
+  ReactNode,
+  useState,
+  useEffect,
+  Fragment,
+  useRef,
+  useCallback,
+} from 'react';
 
 export interface Message {
   id: number;
@@ -18,11 +25,11 @@ interface ChatMessagesProps {
 // Helper function to render JSX elements
 const renderJSXWithTypingEffect = (content: ReactNode, isVisible: boolean) => {
   if (!isVisible) return null;
-  
+
   if (typeof content === 'string') {
     return content;
   }
-  
+
   return content;
 };
 
@@ -53,10 +60,10 @@ const useAutoScroll = (
 
       // Making scroll operation more reliable for iOS Safari
       const targetScrollTop = container.scrollHeight;
-      
+
       // Use instant scroll instead of smooth scroll for iOS Safari
       const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-      
+
       container.scrollTo({
         top: targetScrollTop,
         behavior: isIOS ? 'auto' : behavior,
@@ -124,7 +131,11 @@ const useAutoScroll = (
       const touchY = e.touches[0].clientY;
       const touchDiff = touchStartYRef.current - touchY;
 
-      if (touchDiff > 0 && container.scrollTop < lastScrollTopRef.current && autoScrollEnabled) {
+      if (
+        touchDiff > 0 &&
+        container.scrollTop < lastScrollTopRef.current &&
+        autoScrollEnabled
+      ) {
         setAutoScrollEnabled(false);
       }
 
@@ -140,7 +151,9 @@ const useAutoScroll = (
     };
 
     container.addEventListener('scroll', handleScroll, { passive: true });
-    container.addEventListener('touchstart', handleTouchStart, { passive: true });
+    container.addEventListener('touchstart', handleTouchStart, {
+      passive: true,
+    });
     container.addEventListener('touchmove', handleTouchMove, { passive: true });
     container.addEventListener('touchend', handleTouchEnd, { passive: true });
 
@@ -161,7 +174,10 @@ const useAutoScroll = (
   };
 };
 
-export const ChatContainer = ({ messages, containerRef }: ChatMessagesProps) => {
+export const ChatContainer = ({
+  messages,
+  containerRef,
+}: ChatMessagesProps) => {
   const [typingTexts, setTypingTexts] = useState<string[]>([]);
   const [visibleJSX, setVisibleJSX] = useState<boolean[]>([]);
   const [activeMessages, setActiveMessages] = useState<number[]>([]);
@@ -179,7 +195,7 @@ export const ChatContainer = ({ messages, containerRef }: ChatMessagesProps) => 
 
   useEffect(() => {
     if (messages.length > prevChildrenCountRef.current) {
-      scrollToBottom("smooth");
+      scrollToBottom('smooth');
     }
     prevChildrenCountRef.current = messages.length;
   }, [messages, scrollToBottom]);
@@ -188,17 +204,21 @@ export const ChatContainer = ({ messages, containerRef }: ChatMessagesProps) => 
   useEffect(() => {
     // Process a single assistant message and move to the next one when completed
     const processMessage = (messageIndex: number) => {
-      const assistantMessages = messages.filter(msg => msg.role === 'assistant');
-      
+      const assistantMessages = messages.filter(
+        msg => msg.role === 'assistant'
+      );
+
       if (messageIndex >= assistantMessages.length) {
-        scrollToBottom("smooth");
+        scrollToBottom('smooth');
         return;
       }
-      
+
       const message = assistantMessages[messageIndex];
       const actualMessageIndex = messages.findIndex(
-        (m, i) => m.role === 'assistant' && 
-        messages.filter((msg, j) => msg.role === 'assistant' && j < i).length === messageIndex
+        (m, i) =>
+          m.role === 'assistant' &&
+          messages.filter((msg, j) => msg.role === 'assistant' && j < i)
+            .length === messageIndex
       );
 
       // If this message has already been processed, move to the next one
@@ -206,18 +226,18 @@ export const ChatContainer = ({ messages, containerRef }: ChatMessagesProps) => 
         processMessage(messageIndex + 1);
         return;
       }
-      
+
       // Make this message visible
       setActiveMessages(prev => [...prev, actualMessageIndex]);
-      
+
       if (typeof message.content === 'string') {
         // Display string content as streaming
         let currentCharIndex = 0;
         const content = message.content;
-        
+
         const intervalId = setInterval(() => {
           if (currentCharIndex < content.length) {
-            setTypingTexts((prev) => {
+            setTypingTexts(prev => {
               const newTexts = [...prev];
               newTexts[messageIndex] = content.substring(
                 0,
@@ -235,15 +255,15 @@ export const ChatContainer = ({ messages, containerRef }: ChatMessagesProps) => 
             });
           } else {
             clearInterval(intervalId);
-            
+
             // Mark the message as processed
             processedMessagesRef.current.add(message.id);
-            
+
             // Move to the next message after animation is completed
             setTimeout(() => {
               processMessage(messageIndex + 1);
               if (!isScrolling && !scrollTriggered && autoScrollEnabled) {
-                scrollToBottom("smooth");
+                scrollToBottom('smooth');
               }
             }, 500);
           }
@@ -256,21 +276,21 @@ export const ChatContainer = ({ messages, containerRef }: ChatMessagesProps) => 
           newVisible[messageIndex] = false;
           return newVisible;
         });
-        
+
         setTimeout(() => {
           setVisibleJSX(prev => {
             const newVisible = [...prev];
             newVisible[messageIndex] = true;
             return newVisible;
           });
-          
+
           // Mark the message as processed
           processedMessagesRef.current.add(message.id);
-          
+
           setTimeout(() => {
             processMessage(messageIndex + 1);
             if (!isScrolling && !scrollTriggered && autoScrollEnabled) {
-              scrollToBottom("smooth");
+              scrollToBottom('smooth');
             }
           }, 200);
         }, 100);
@@ -279,28 +299,36 @@ export const ChatContainer = ({ messages, containerRef }: ChatMessagesProps) => 
 
     // Reset states for new messages only
     const assistantMessages = messages.filter(msg => msg.role === 'assistant');
-    const unprocessedAssistantMessages = assistantMessages.filter(msg => !processedMessagesRef.current.has(msg.id));
-    
+    const unprocessedAssistantMessages = assistantMessages.filter(
+      msg => !processedMessagesRef.current.has(msg.id)
+    );
+
     if (unprocessedAssistantMessages.length > 0) {
       setTypingTexts(prev => {
         const newTexts = [...prev];
         unprocessedAssistantMessages.forEach((_, index) => {
-          const totalIndex = assistantMessages.length - unprocessedAssistantMessages.length + index;
+          const totalIndex =
+            assistantMessages.length -
+            unprocessedAssistantMessages.length +
+            index;
           newTexts[totalIndex] = '';
         });
         return newTexts;
       });
-      
+
       setVisibleJSX(prev => {
         const newVisible = [...prev];
         unprocessedAssistantMessages.forEach((_, index) => {
-          const totalIndex = assistantMessages.length - unprocessedAssistantMessages.length + index;
+          const totalIndex =
+            assistantMessages.length -
+            unprocessedAssistantMessages.length +
+            index;
           newVisible[totalIndex] = false;
         });
         return newVisible;
       });
     }
-    
+
     // Keep existing active messages and add new user messages
     setActiveMessages(prev => {
       const newActiveMessages = [...prev];
@@ -318,24 +346,28 @@ export const ChatContainer = ({ messages, containerRef }: ChatMessagesProps) => 
       });
       return newActiveMessages;
     });
-    
+
     // Show "AI thinking" only if the last message is from user and unprocessed
     const lastMessage = messages[messages.length - 1];
     if (lastMessage && lastMessage.role === 'user') {
       setShowThinking(true);
-      
+
       setTimeout(() => {
         setShowThinking(false);
-        
+
         // Start processing from the first unprocessed assistant message
-        const firstUnprocessedIndex = assistantMessages.findIndex(m => !processedMessagesRef.current.has(m.id));
+        const firstUnprocessedIndex = assistantMessages.findIndex(
+          m => !processedMessagesRef.current.has(m.id)
+        );
         if (firstUnprocessedIndex !== -1) {
           processMessage(firstUnprocessedIndex);
         }
       }, 2000);
     } else {
       // If the last message is not from user, process any unprocessed assistant messages
-      const firstUnprocessedIndex = assistantMessages.findIndex(m => !processedMessagesRef.current.has(m.id));
+      const firstUnprocessedIndex = assistantMessages.findIndex(
+        m => !processedMessagesRef.current.has(m.id)
+      );
       if (firstUnprocessedIndex !== -1) {
         processMessage(firstUnprocessedIndex);
       }
@@ -406,7 +438,7 @@ export const ChatContainer = ({ messages, containerRef }: ChatMessagesProps) => 
                 )
               ) : (
                 // Normal render for user messages
-                <p className='text-foreground/70 text-sm'>{message.content}</p>
+                <p className="text-foreground/70 text-sm">{message.content}</p>
               )}
             </div>
           </div>

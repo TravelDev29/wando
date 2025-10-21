@@ -19,7 +19,7 @@ export const Updates = () => {
         description="Latest features, tips, and travel trends – stay informed!"
       />
       <Timeline defaultValue={1} className="gap-4">
-        {items.map((item) => (
+        {items.map(item => (
           <TimelineItem
             key={item.id}
             step={item.id}

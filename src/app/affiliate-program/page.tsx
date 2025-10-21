@@ -1,7 +1,7 @@
-"use client";
-import { SidebarProvider } from "../../components/ui/sidebar";
-import { SettingsLayout } from "../../layouts/settings-layout";
-import { AffiliateProgram } from "../../components/pages/settings-layout/affiliate-program";
+'use client';
+import { SidebarProvider } from '../../components/ui/sidebar';
+import { SettingsLayout } from '../../layouts/settings-layout';
+import { AffiliateProgram } from '../../components/pages/settings-layout/affiliate-program';
 
 export default function AffiliateProgramPage() {
   return (
@@ -12,4 +12,3 @@ export default function AffiliateProgramPage() {
     </SidebarProvider>
   );
 }
-

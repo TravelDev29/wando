@@ -74,13 +74,9 @@ export const useAssistantMessages = () => {
       role: 'assistant',
       content: (
         <div className="flex flex-col gap-2">
-          <h1 className='text-foreground/80'>
-              Ready to explore the world?
-          </h1>
+          <h1 className="text-foreground/80">Ready to explore the world?</h1>
 
-          <p className='text-foreground/60'>
-              Let's plan your dream trip! ✨
-          </p>
+          <p className="text-foreground/60">Let&apos;s plan your dream trip! ✨</p>
         </div>
       ),
     },
@@ -89,84 +85,78 @@ export const useAssistantMessages = () => {
       role: 'assistant',
       content: (
         <PhotoProvider>
-            <div className="grid grid-cols-4 gap-1 md:gap-2 w-full rounded-2xl overflow-hidden">
-              <div className="col-span-3 md:col-span-2 rounded-l-lg relative max-h-[360px]">
-                
-                <PhotoView src="/images/barcelona-cityscape-large.jpg">
-                  <div className="absolute inset-0 bg-[url('/images/barcelona-cityscape.jpg')] bg-cover bg-center backdrop-blur-xl cursor-pointer hover:opacity-80 transition-opacity duration-300"></div>
-                </PhotoView>
-                <div className="absolute flex rounded-l-lg items-center justify-center bottom-0 left-0 w-full h-20 bg-gradient-to-t from-white/32 via-white/2 to-transparent backdrop-blur-[1px]">
-                  <div className="flex absolute max-w-[206px] px-4 bottom-4 sm:bottom-8 items-center justify-center gap-2 flex-col">
-                    
-                    <h1 className="relative font-second text-2xl sm:text-5xl leading-11 tracking-tight text-white shadow-xl">
-                      BARCELONA
-                    </h1>
-                    <div className="flex h-[31px] items-center justify-center bg-layout/50 px-4 py-2 rounded-full gap-2 backdrop-blur-[18px]">
-                      <Calendar1Icon
-                        size={14}
-                        className="text-white font-semibold"
-                      />
-                      <span className="text-xs font-semibold text-white">
-                        May 11
-                      </span>
-                      <span className="text-xs font-semibold text-white">
-                        →
-                      </span>
-                      <span className="text-xs font-semibold text-white">
-                        May 17
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-span-1 md:col-span-2 grid grid-cols-1 md:grid-cols-2 grid-rows-4 md:grid-rows-2 gap-1 md:gap-2 max-h-[360px]">
-                <div className="h-full w-full">
-                  <PhotoView src="/images/barcelona-arch-large.jpg">
-                      <img
-                        src="/images/barcelona-arch.jpg"
-                        alt="Barcelona Arch"
-                        className="object-cover h-full w-full cursor-pointer hover:opacity-80 transition-opacity duration-300"
-                      />
-                  </PhotoView>
-                </div>
-
-                <div className="h-full w-full">
-                  <PhotoView src="/images/barcelona-beach-large.jpg">
-                      <img
-                        src="/images/barcelona-beach.jpg"
-                        alt="Barcelona Beach"
-                        className="object-cover h-full w-full cursor-pointer hover:opacity-80 transition-opacity duration-300"
-                      />
-                  </PhotoView>
-                </div>
-
-                <div className="h-full w-full">
-                  <PhotoView src="/images/barcelona-fountain-large.jpg">
-                    <img
-                      src="/images/barcelona-fountain.jpg"
-                      alt="Barcelona Fountain"
-                      className="object-cover h-full w-full cursor-pointer hover:opacity-80 transition-opacity duration-300"
+          <div className="grid grid-cols-4 gap-1 md:gap-2 w-full rounded-2xl overflow-hidden">
+            <div className="col-span-3 md:col-span-2 rounded-l-lg relative max-h-[360px]">
+              <PhotoView src="/images/barcelona-cityscape-large.jpg">
+                <div className="absolute inset-0 bg-[url('/images/barcelona-cityscape.jpg')] bg-cover bg-center backdrop-blur-xl cursor-pointer hover:opacity-80 transition-opacity duration-300"></div>
+              </PhotoView>
+              <div className="absolute flex rounded-l-lg items-center justify-center bottom-0 left-0 w-full h-20 bg-gradient-to-t from-white/32 via-white/2 to-transparent backdrop-blur-[1px]">
+                <div className="flex absolute max-w-[206px] px-4 bottom-4 sm:bottom-8 items-center justify-center gap-2 flex-col">
+                  <h1 className="relative font-second text-2xl sm:text-5xl leading-11 tracking-tight text-white shadow-xl">
+                    BARCELONA
+                  </h1>
+                  <div className="flex h-[31px] items-center justify-center bg-layout/50 px-4 py-2 rounded-full gap-2 backdrop-blur-[18px]">
+                    <Calendar1Icon
+                      size={14}
+                      className="text-white font-semibold"
                     />
-                  </PhotoView>
-                  
-                </div>
-                <div className="h-full w-full overflow-hidden relative">
-                  <PhotoView src="/images/barcelona-park-large.jpg">
-                    <img
-                      src="/images/barcelona-park.jpg"
-                      alt="Park Güell"
-                      className="object-cover h-full w-full cursor-pointer hover:opacity-80 transition-opacity duration-300"
-                    />
-                  </PhotoView>
-                  
-                  <div className="absolute bottom-2 right-2 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
-                    +24
+                    <span className="text-xs font-semibold text-white">
+                      May 11
+                    </span>
+                    <span className="text-xs font-semibold text-white">→</span>
+                    <span className="text-xs font-semibold text-white">
+                      May 17
+                    </span>
                   </div>
                 </div>
               </div>
             </div>
+            <div className="col-span-1 md:col-span-2 grid grid-cols-1 md:grid-cols-2 grid-rows-4 md:grid-rows-2 gap-1 md:gap-2 max-h-[360px]">
+              <div className="h-full w-full">
+                <PhotoView src="/images/barcelona-arch-large.jpg">
+                  <img
+                    src="/images/barcelona-arch.jpg"
+                    alt="Barcelona Arch"
+                    className="object-cover h-full w-full cursor-pointer hover:opacity-80 transition-opacity duration-300"
+                  />
+                </PhotoView>
+              </div>
+
+              <div className="h-full w-full">
+                <PhotoView src="/images/barcelona-beach-large.jpg">
+                  <img
+                    src="/images/barcelona-beach.jpg"
+                    alt="Barcelona Beach"
+                    className="object-cover h-full w-full cursor-pointer hover:opacity-80 transition-opacity duration-300"
+                  />
+                </PhotoView>
+              </div>
+
+              <div className="h-full w-full">
+                <PhotoView src="/images/barcelona-fountain-large.jpg">
+                  <img
+                    src="/images/barcelona-fountain.jpg"
+                    alt="Barcelona Fountain"
+                    className="object-cover h-full w-full cursor-pointer hover:opacity-80 transition-opacity duration-300"
+                  />
+                </PhotoView>
+              </div>
+              <div className="h-full w-full overflow-hidden relative">
+                <PhotoView src="/images/barcelona-park-large.jpg">
+                  <img
+                    src="/images/barcelona-park.jpg"
+                    alt="Park Güell"
+                    className="object-cover h-full w-full cursor-pointer hover:opacity-80 transition-opacity duration-300"
+                  />
+                </PhotoView>
+
+                <div className="absolute bottom-2 right-2 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
+                  +24
+                </div>
+              </div>
+            </div>
+          </div>
         </PhotoProvider>
-        
       ),
     },
     {
@@ -179,7 +169,7 @@ export const useAssistantMessages = () => {
             Barcelona is a vibrant city known for its stunning architecture,
             including the iconic Sagrada Familia and Park Güell. Enjoy the
             lively atmosphere of Las Ramblas, indulge in delicious tapas, and
-            soak up the sun on the beautiful beaches. Don't miss the chance to
+            soak up the sun on the beautiful beaches. Don&apos;t miss the chance to
             explore the rich history and culture of this Catalan capital!
           </p>
         </div>
@@ -319,9 +309,9 @@ export const useAssistantMessages = () => {
                         <span>
                           Your adventure begins as you arrive in Barcelona early
                           in the morning. After checking into your accommodation
-                          and freshening up, you'll dive into the city's vibrant
+                          and freshening up, you&apos;ll dive into the city&apos;s vibrant
                           culture and iconic landmarks. Today is all about
-                          getting familiar with Barcelona's energy and preparing
+                          getting familiar with Barcelona&apos;s energy and preparing
                           for the days ahead.
                         </span>
                         <span>Approx. Total Cost: $52 for 1 person</span>
@@ -346,7 +336,7 @@ export const useAssistantMessages = () => {
                           </span>
                           <span>
                             🥐 Grab a quick breakfast at a local café (try
-                            "churros con chocolate", €3.10 ~ 4.20).
+                            &quot;churros con chocolate&quot;, €3.10 ~ 4.20).
                           </span>
                         </div>
                       </div>
@@ -505,13 +495,13 @@ export const useAssistantMessages = () => {
                       Park Güell and Gothic Quarter
                     </AccordionTrigger>
                     <AccordionContent className="py-2 flex flex-col gap-4">
-                    <div className="flex flex-col gap-2 text-foreground/60 leading-5 text-start font-normal">
+                      <div className="flex flex-col gap-2 text-foreground/60 leading-5 text-start font-normal">
                         <span>
                           Your adventure begins as you arrive in Barcelona early
                           in the morning. After checking into your accommodation
-                          and freshening up, you'll dive into the city's vibrant
+                          and freshening up, you&apos;ll dive into the city&apos;s vibrant
                           culture and iconic landmarks. Today is all about
-                          getting familiar with Barcelona's energy and preparing
+                          getting familiar with Barcelona&apos;s energy and preparing
                           for the days ahead.
                         </span>
                         <span>Approx. Total Cost: $52 for 1 person</span>
@@ -536,7 +526,7 @@ export const useAssistantMessages = () => {
                           </span>
                           <span>
                             🥐 Grab a quick breakfast at a local café (try
-                            "churros con chocolate", €3.10 ~ 4.20).
+                            &quot;churros con chocolate&quot;, €3.10 ~ 4.20).
                           </span>
                         </div>
                       </div>
@@ -611,47 +601,67 @@ export const useAssistantMessages = () => {
             <Accordion type="single" collapsible defaultValue="item-1">
               <AccordionItem value="item-1">
                 <AccordionTrigger className="text-foreground text-sm font-medium leading-5 [&>svg]:-order-1 justify-start">
-                 Tipping Etiquette 💰
+                  Tipping Etiquette 💰
                 </AccordionTrigger>
                 <AccordionContent className="text-foreground/70 text-sm text-start ps-8 font-normal">
-                Tipping isn’t required in Barcelona, but it’s a kind gesture. At restaurants, rounding up or leaving 5–10% is common. For example, if the bill is €18, leaving €20 is appreciated. 💶
+                  Tipping isn’t required in Barcelona, but it’s a kind gesture.
+                  At restaurants, rounding up or leaving 5–10% is common. For
+                  example, if the bill is €18, leaving €20 is appreciated. 💶
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-2">
                 <AccordionTrigger className="text-foreground text-sm font-medium leading-5 [&>svg]:-order-1 justify-start">
-                   Dining Customs 🍽️
+                  Dining Customs 🍽️
                 </AccordionTrigger>
                 <AccordionContent className="text-foreground/70 text-sm text-start ps-8 font-normal">
-                 Mealtimes in Barcelona are later than in many countries—lunch is around 2–4 PM and dinner often starts after 9 PM. Tapas are small shared plates common in bars and restaurants. The “menú del día” (daily set menu) is a popular and affordable lunch option. Water is usually paid—ask for “agua con gas” (sparkling) or “sin gas” (still). 🍷
+                  Mealtimes in Barcelona are later than in many countries—lunch
+                  is around 2–4 PM and dinner often starts after 9 PM. Tapas are
+                  small shared plates common in bars and restaurants. The “menú
+                  del día” (daily set menu) is a popular and affordable lunch
+                  option. Water is usually paid—ask for “agua con gas”
+                  (sparkling) or “sin gas” (still). 🍷
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-3">
                 <AccordionTrigger className="text-foreground text-sm font-medium leading-5 [&>svg]:-order-1 justify-start">
-                 Public Behavior 🚶
+                  Public Behavior 🚶
                 </AccordionTrigger>
                 <AccordionContent className="text-foreground/70 text-sm text-start ps-8 font-normal">
-                Locals value patience and courtesy in public spaces. Queuing is respected, especially on public transport. Speaking quietly in shared areas (like trains or cafés) is expected. Always clean up after yourself—littering is frowned upon. 🧍‍♂️
+                  Locals value patience and courtesy in public spaces. Queuing
+                  is respected, especially on public transport. Speaking quietly
+                  in shared areas (like trains or cafés) is expected. Always
+                  clean up after yourself—littering is frowned upon. 🧍‍♂️
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-4">
                 <AccordionTrigger className="text-foreground text-sm font-medium leading-5 [&>svg]:-order-1 justify-start">
-                 Language Tips 🗣️
+                  Language Tips 🗣️
                 </AccordionTrigger>
                 <AccordionContent className="text-foreground/70 text-sm text-start ps-8 font-normal">
-                Both Spanish (Castellano) and Catalan are official languages in Barcelona. Using basic phrases in either is appreciated.
-                     <ul className="list-disc list-inside mt-2">
-                      <li>Spanish: “hola” (hello), “gracias” (thank you), “por favor” (please)</li>
-                      <li>Catalan: “bon dia” (good morning), “merci” (thanks), “si us plau” (please)</li>
-                      <li>Even a simple greeting can go a long way.</li>
-                     </ul>
+                  Both Spanish (Castellano) and Catalan are official languages
+                  in Barcelona. Using basic phrases in either is appreciated.
+                  <ul className="list-disc list-inside mt-2">
+                    <li>
+                      Spanish: “hola” (hello), “gracias” (thank you), “por
+                      favor” (please)
+                    </li>
+                    <li>
+                      Catalan: “bon dia” (good morning), “merci” (thanks), “si
+                      us plau” (please)
+                    </li>
+                    <li>Even a simple greeting can go a long way.</li>
+                  </ul>
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-5">
                 <AccordionTrigger className="text-foreground text-sm font-medium leading-5 [&>svg]:-order-1 justify-start">
-                Beach Etiquette 🏖️ 
+                  Beach Etiquette 🏖️
                 </AccordionTrigger>
                 <AccordionContent className="text-foreground/70 text-sm text-start ps-8 font-normal">
-                Nudity isn’t allowed on most public beaches—wear swimwear. Arrive early to rent loungers or umbrellas. Loud music and messy setups aren’t welcome. Always clean up your trash and respect others’ space. 🌊
+                  Nudity isn’t allowed on most public beaches—wear swimwear.
+                  Arrive early to rent loungers or umbrellas. Loud music and
+                  messy setups aren’t welcome. Always clean up your trash and
+                  respect others’ space. 🌊
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
@@ -716,5 +726,5 @@ export const useAssistantMessages = () => {
   return messages;
 };
 
-// Default export to prevent Next.js from treating this as a page component
+// Named export to prevent Next.js from treating this as a page component
 export default null;

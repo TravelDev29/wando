@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -238,14 +238,14 @@
   --color-warning: var(--warning);
   --animate-shine: shine var(--duration) infinite linear;
   @keyframes shine {
-  0% {
-    background-position: 0% 0%;
+    0% {
+      background-position: 0% 0%;
     }
-  50% {
-    background-position: 100% 100%;
+    50% {
+      background-position: 100% 100%;
     }
-  to {
-    background-position: 0% 0%;
+    to {
+      background-position: 0% 0%;
     }
   }
 }
@@ -270,14 +270,14 @@
     text-rendering: optimizeLegibility;
   }
 
-  button{
+  button {
     cursor: pointer;
-  }  
+  }
 
   h1 {
     @apply text-xl md:text-2xl lg:text-3xl;
   }
-  
+
   p {
     @apply text-sm md:text-base text-foreground;
   }
@@ -287,16 +287,16 @@
   }
 
   ::-webkit-scrollbar {
-    width: 5px
+    width: 5px;
   }
 
   ::-webkit-scrollbar-track {
-      background: 0 0
+    background: 0 0;
   }
 
   ::-webkit-scrollbar-thumb {
-      background: hsl(var(--border));
-      border-radius: 5px
+    background: hsl(var(--border));
+    border-radius: 5px;
   }
 }
 

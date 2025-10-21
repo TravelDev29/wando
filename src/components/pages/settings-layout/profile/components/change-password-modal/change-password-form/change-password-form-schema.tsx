@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 export const changePasswordSchema = z
   .object({
@@ -12,7 +12,7 @@ export const changePasswordSchema = z
       .string()
       .min(6, 'Verify new password must be at least 6 characters.'),
   })
-  .refine((data) => data.newPassword === data.verifyNewPassword, {
+  .refine(data => data.newPassword === data.verifyNewPassword, {
     message: "Passwords don't match",
     path: ['verifyNewPassword'],
   });

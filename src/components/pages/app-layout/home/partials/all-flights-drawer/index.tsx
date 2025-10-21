@@ -34,7 +34,6 @@ export const AllFlightsDrawer = () => {
       }
       open={open}
       onOpenChange={setOpen}
-
     >
       <div className="flex flex-col gap-6">
         <div className="flex gap-4 sticky top-0 bg-layout z-10 pb-4">
@@ -83,10 +82,7 @@ export const AllFlightsDrawer = () => {
         </div>
         <div className="flex flex-col gap-5 ">
           {flightData.slice(0, loadMore).map((flight, index) => (
-            <FlightCard
-              key={index}
-              data={flight}
-            />
+            <FlightCard key={index} data={flight} />
           ))}
           <div className="flex justify-center">
             <Button

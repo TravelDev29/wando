@@ -31,7 +31,7 @@ const FeedbackModal = () => {
       comment: '',
     },
   });
- 
+
   useEffect(() => {
     if (!open) {
       form.reset();
@@ -77,7 +77,7 @@ const FeedbackModal = () => {
                   <FormControl>
                     <div className="flex flex-col gap-3 w-full">
                       <div className="flex flex-row w-full items-center justify-between">
-                        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
+                        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => (
                           <Button
                             {...field}
                             key={num}

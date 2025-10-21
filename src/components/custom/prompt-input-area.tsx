@@ -15,7 +15,7 @@ import { Textarea } from '../ui/textarea';
 import { useRef, useState } from 'react';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
 import { cn } from '@/lib/utils';
-import { ShineBorder } from "@/components/magicui/shine-border";
+import { ShineBorder } from '@/components/magicui/shine-border';
 
 interface PromptInputAreaProps {
   showSuggestions?: boolean;
@@ -30,7 +30,9 @@ export const PromptInputArea = ({
 }: PromptInputAreaProps) => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const [input, setInput] = useState("Plan a 6-day adventure trip to Barcelona for 3 friends in October. Include hiking in Montserrat, a bike tour of the city, and a day for exploring Gothic Quarter. Budget-friendly options preferred.");
+  const [input, setInput] = useState(
+    'Plan a 6-day adventure trip to Barcelona for 3 friends in October. Include hiking in Montserrat, a bike tour of the city, and a day for exploring Gothic Quarter. Budget-friendly options preferred.'
+  );
   const [files, setFiles] = useState<File[]>([]);
   const uploadInputRef = useRef<HTMLInputElement>(null);
 
@@ -76,26 +78,30 @@ export const PromptInputArea = ({
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
       const newFiles = Array.from(event.target.files);
-      setFiles((prev) => [...prev, ...newFiles]);
+      setFiles(prev => [...prev, ...newFiles]);
     }
   };
 
   const handleRemoveFile = (index: number) => {
-    setFiles((prev) => prev.filter((_, i) => i !== index));
+    setFiles(prev => prev.filter((_, i) => i !== index));
     if (uploadInputRef?.current) {
       uploadInputRef.current.value = '';
     }
   };
 
   return (
-    <div className={cn("flex flex-col gap-4 w-full", className)}>
+    <div className={cn('flex flex-col gap-4 w-full', className)}>
       <div className="w-full rounded-xl bg-card relative overflow-hidden">
         <div className="relative rounded-xl">
-          <ShineBorder duration={4} style={{opacity: 0.8}} shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]} />
+          <ShineBorder
+            duration={4}
+            style={{ opacity: 0.8 }}
+            shineColor={['#A07CFE', '#FE8FB5', '#FFBE7B']}
+          />
           <Textarea
             value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => {
+            onChange={e => setInput(e.target.value)}
+            onKeyDown={e => {
               if (e.key === 'Enter' && !e.shiftKey) {
                 e.preventDefault();
                 handleSubmit();
@@ -173,7 +179,7 @@ export const PromptInputArea = ({
       </div>
       {showSuggestions && (
         <div className="flex flex-wrap gap-2 items-center justify-center">
-          {suggestionPrompts.map((prompt) => (
+          {suggestionPrompts.map(prompt => (
             <Button
               variant="outline"
               className="border-2 border-input gap-2 px-5 font-normal cursor-pointer text-neutral-500"

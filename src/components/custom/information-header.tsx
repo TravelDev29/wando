@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 
 export const InformationHeader = ({
   title,
@@ -15,7 +15,7 @@ export const InformationHeader = ({
     <div
       className={cn(
         'flex items-center gap-2 justify-between bg-layout',
-        className,
+        className
       )}
     >
       <div className="flex items-center gap-2">

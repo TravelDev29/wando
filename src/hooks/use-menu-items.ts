@@ -1,5 +1,5 @@
 import { DiscordIcon } from './../components/custom/icons/discord-icon';
-import { IconName } from "lucide-react/dynamic";
+import { IconName } from 'lucide-react/dynamic';
 
 export interface MenuItem {
   title: string;
@@ -88,6 +88,6 @@ export const useMenuItems = (): MenuItem[] => {
           icon: DiscordIcon,
         },
       ],
-    }
+    },
   ];
 };

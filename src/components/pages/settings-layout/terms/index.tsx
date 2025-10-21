@@ -13,11 +13,11 @@ export const Terms = () => {
           Last updated: 02.13.2025
         </span>
         <span className="text-sm text-foreground/60 leading-5 font-normal">
-          Welcome to Travel Planner (the "Service"). These Terms & Conditions
-          ("Terms") govern your access to and use of our AI-powered trip
+          Welcome to Travel Planner (the &quot;Service&quot;). These Terms &amp; Conditions
+          (&quot;Terms&quot;) govern your access to and use of our AI-powered trip
           planning platform, including any content, functionality, and services
           offered through our website or mobile application (collectively, the
-          "Platform"). By accessing or using the Service, you agree to be bound
+          &quot;Platform&quot;). By accessing or using the Service, you agree to be bound
           by these Terms. If you do not agree to these Terms, you must not use
           the Service.
         </span>

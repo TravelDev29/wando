@@ -30,10 +30,10 @@ class CheckpointMonitor {
 
     console.log('🚀 Starting checkpoint monitor...');
     this.isRunning = true;
-    
+
     // Monitor git changes
     this.monitorGitChanges();
-    
+
     // Monitor file system changes
     this.monitorFileChanges();
   }
@@ -76,7 +76,7 @@ class CheckpointMonitor {
   setupGitHooks() {
     const hooksDir = path.join(process.cwd(), '.git', 'hooks');
     const postCommitHook = path.join(hooksDir, 'post-commit');
-    
+
     const hookContent = `#!/bin/sh
 # Auto-triggered by Cursor checkpoint monitor
 node .cursor/tasks/checkpoint-monitor.js --analyze
@@ -86,10 +86,10 @@ node .cursor/tasks/checkpoint-monitor.js --analyze
       if (!fs.existsSync(hooksDir)) {
         fs.mkdirSync(hooksDir, { recursive: true });
       }
-      
+
       fs.writeFileSync(postCommitHook, hookContent);
       fs.chmodSync(postCommitHook, '755');
-      
+
       console.log('✅ Git hooks configured');
     } catch (error) {
       console.warn('⚠️  Could not set up git hooks:', error.message);
@@ -102,13 +102,12 @@ node .cursor/tasks/checkpoint-monitor.js --analyze
   async checkForSignificantChanges() {
     try {
       const result = checkpointWorkflow.runValidationWorkflow();
-      
+
       if (result.action === 'suggest_checkpoint') {
         this.suggestCheckpoint(result);
       } else if (result.action === 'suggest_rollback') {
         this.suggestRollback(result);
       }
-      
     } catch (error) {
       console.error('Error in checkpoint monitor:', error.message);
     }
@@ -158,10 +157,10 @@ node .cursor/tasks/checkpoint-monitor.js --analyze
    */
   async analyzeCurrentState() {
     console.log('🔍 Analyzing current state for checkpoint suggestion...');
-    
+
     try {
       const result = checkpointWorkflow.runValidationWorkflow();
-      
+
       if (result.action === 'suggest_checkpoint') {
         this.suggestCheckpoint(result);
       } else if (result.action === 'suggest_rollback') {
@@ -169,7 +168,6 @@ node .cursor/tasks/checkpoint-monitor.js --analyze
       } else {
         console.log('ℹ️  No checkpoint suggestion needed at this time');
       }
-      
     } catch (error) {
       console.error('❌ Analysis failed:', error.message);
     }
@@ -182,7 +180,7 @@ const monitor = new CheckpointMonitor();
 // Handle command line arguments
 if (require.main === module) {
   const args = process.argv.slice(2);
-  
+
   if (args.includes('--start')) {
     monitor.start();
   } else if (args.includes('--stop')) {

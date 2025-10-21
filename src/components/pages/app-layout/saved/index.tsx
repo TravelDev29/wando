@@ -10,19 +10,42 @@ export const Saved = () => {
   return (
     <AppLayoutContent
       title={
-        <div className='flex items-center gap-2'>
-          <TextAnimate animation="blurInUp" delay={0.1} duration={0.2} by="character" once as="h1" className='leading-8 font-normal'>
-             Saved
+        <div className="flex items-center gap-2">
+          <TextAnimate
+            animation="blurInUp"
+            delay={0.1}
+            duration={0.2}
+            by="character"
+            once
+            as="h1"
+            className="leading-8 font-normal"
+          >
+            Saved
           </TextAnimate>
 
-          <TextAnimate animation="blurInUp" delay={0.3} duration={0.2} by="character" once as="span" className='text-xl md:text-2xl lg:text-3xl text-foreground/70 leading-5'>
+          <TextAnimate
+            animation="blurInUp"
+            delay={0.3}
+            duration={0.2}
+            by="character"
+            once
+            as="span"
+            className="text-xl md:text-2xl lg:text-3xl text-foreground/70 leading-5"
+          >
             (4)
           </TextAnimate>
         </div>
-        
       }
       description={
-        <TextAnimate animation="blurInUp" delay={0.3} duration={0.3} by="character" once as="p" className='text-foreground/70 leading-5'>
+        <TextAnimate
+          animation="blurInUp"
+          delay={0.3}
+          duration={0.3}
+          by="character"
+          once
+          as="p"
+          className="text-foreground/70 leading-5"
+        >
           Destinations, hotels, and activities you’ve bookmarked
         </TextAnimate>
       }
@@ -41,10 +64,7 @@ export const Saved = () => {
               <div className="flex flex-col gap-1 items-center justify-center">
                 <div className="flex gap-1">
                   {Array.from({ length: 3 }).map((_, index) => (
-                    <StarIcon
-                      key={index}
-                      className="size-4 text-yellow-500"
-                    />
+                    <StarIcon key={index} className="size-4 text-yellow-500" />
                   ))}
                 </div>
                 <span className="text-base font-medium text-foreground">
@@ -52,7 +72,9 @@ export const Saved = () => {
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <Tag className="bg-review-card text-foreground-light-solid">4.3/5</Tag>
+                <Tag className="bg-review-card text-foreground-light-solid">
+                  4.3/5
+                </Tag>
                 <span className="text-sm font-bold text-foreground/70">
                   Very Good
                 </span>
@@ -78,10 +100,7 @@ export const Saved = () => {
               <div className="flex flex-col gap-1 items-center justify-center">
                 <div className="flex gap-1">
                   {Array.from({ length: 4 }).map((_, index) => (
-                    <StarIcon
-                      key={index}
-                      className="size-4 text-yellow-500"
-                    />
+                    <StarIcon key={index} className="size-4 text-yellow-500" />
                   ))}
                 </div>
                 <span className="text-base font-medium text-foreground">
@@ -89,7 +108,9 @@ export const Saved = () => {
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <Tag className="bg-review-card text-foreground-light-solid">4.8/5</Tag>
+                <Tag className="bg-review-card text-foreground-light-solid">
+                  4.8/5
+                </Tag>
                 <span className="text-sm font-bold text-foreground/70">
                   Amazing
                 </span>
@@ -115,10 +136,7 @@ export const Saved = () => {
               <div className="flex flex-col gap-1 items-center justify-center">
                 <div className="flex gap-1">
                   {Array.from({ length: 3 }).map((_, index) => (
-                    <StarIcon
-                      key={index}
-                      className="size-4 text-yellow-500"
-                    />
+                    <StarIcon key={index} className="size-4 text-yellow-500" />
                   ))}
                 </div>
                 <span className="text-base font-medium text-foreground">
@@ -126,7 +144,9 @@ export const Saved = () => {
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <Tag className="bg-review-card text-foreground-light-solid">3.9/5</Tag>
+                <Tag className="bg-review-card text-foreground-light-solid">
+                  3.9/5
+                </Tag>
                 <span className="text-sm font-bold text-foreground/70">
                   Good
                 </span>
@@ -152,10 +172,7 @@ export const Saved = () => {
               <div className="flex flex-col gap-1 items-center justify-center">
                 <div className="flex gap-1">
                   {Array.from({ length: 4 }).map((_, index) => (
-                    <StarIcon
-                      key={index}
-                      className="size-4 text-yellow-500"
-                    />
+                    <StarIcon key={index} className="size-4 text-yellow-500" />
                   ))}
                 </div>
                 <span className="text-base font-medium text-foreground">
@@ -163,7 +180,9 @@ export const Saved = () => {
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <Tag className="bg-review-card text-foreground-light-solid">4.8/5</Tag>
+                <Tag className="bg-review-card text-foreground-light-solid">
+                  4.8/5
+                </Tag>
                 <span className="text-sm font-bold text-foreground/70">
                   Very Good
                 </span>

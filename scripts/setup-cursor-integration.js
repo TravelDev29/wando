@@ -35,7 +35,7 @@ if (!fs.existsSync(tasksDir)) {
 // Make scripts executable
 const scripts = [
   '.cursor/integrations/checkpoint-workflow.js',
-  '.cursor/tasks/checkpoint-monitor.js'
+  '.cursor/tasks/checkpoint-monitor.js',
 ];
 
 scripts.forEach(script => {
@@ -53,9 +53,9 @@ scripts.forEach(script => {
 // Test the integration
 console.log('🔍 Testing integration...');
 try {
-  const result = execSync('node .cursor/integrations/checkpoint-workflow.js', { 
-    encoding: 'utf8', 
-    stdio: 'pipe' 
+  const result = execSync('node .cursor/integrations/checkpoint-workflow.js', {
+    encoding: 'utf8',
+    stdio: 'pipe',
   });
   console.log('✅ Integration test passed');
 } catch (error) {
@@ -67,7 +67,7 @@ console.log('🔧 Setting up git hooks...');
 try {
   const hooksDir = path.join(process.cwd(), '.git', 'hooks');
   const postCommitHook = path.join(hooksDir, 'post-commit');
-  
+
   const hookContent = `#!/bin/sh
 # Auto-triggered by Cursor checkpoint monitor
 node .cursor/tasks/checkpoint-monitor.js --analyze
@@ -77,7 +77,9 @@ node .cursor/tasks/checkpoint-monitor.js --analyze
     fs.writeFileSync(postCommitHook, hookContent);
     console.log('✅ Git post-commit hook configured');
   } else {
-    console.warn('⚠️  Git hooks directory not found. Run this in a git repository.');
+    console.warn(
+      '⚠️  Git hooks directory not found. Run this in a git repository.'
+    );
   }
 } catch (error) {
   console.warn('⚠️  Could not set up git hooks:', error.message);
@@ -86,10 +88,16 @@ node .cursor/tasks/checkpoint-monitor.js --analyze
 console.log('\n🎉 Cursor Checkpoint Integration setup complete!');
 console.log('\n📋 Next steps:');
 console.log('1. The integration is now active and monitoring your changes');
-console.log('2. After large refactors, you\'ll see checkpoint suggestions');
-console.log('3. If builds fail, you\'ll see rollback suggestions');
+console.log("2. After large refactors, you'll see checkpoint suggestions");
+console.log("3. If builds fail, you'll see rollback suggestions");
 console.log('\n💡 Manual commands:');
-console.log('   node .cursor/tasks/checkpoint-monitor.js --analyze  # Analyze current state');
-console.log('   node .cursor/tasks/checkpoint-monitor.js --start    # Start monitoring');
-console.log('   node .cursor/tasks/checkpoint-monitor.js --stop     # Stop monitoring');
+console.log(
+  '   node .cursor/tasks/checkpoint-monitor.js --analyze  # Analyze current state'
+);
+console.log(
+  '   node .cursor/tasks/checkpoint-monitor.js --start    # Start monitoring'
+);
+console.log(
+  '   node .cursor/tasks/checkpoint-monitor.js --stop     # Stop monitoring'
+);
 console.log('\n📖 See .cursor/README.md for detailed documentation');

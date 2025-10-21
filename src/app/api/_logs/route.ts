@@ -4,7 +4,10 @@ import { getLogs, getLogStats } from '@/lib/log-buffer';
 export async function GET(request: NextRequest) {
   // Block in production for security
   if (process.env.NODE_ENV === 'production') {
-    return NextResponse.json({ error: 'Not available in production' }, { status: 403 });
+    return NextResponse.json(
+      { error: 'Not available in production' },
+      { status: 403 }
+    );
   }
 
   const { searchParams } = new URL(request.url);

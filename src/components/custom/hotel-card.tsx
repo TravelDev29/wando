@@ -43,7 +43,7 @@ export const HotelCard = ({
       >
         <Carousel setApi={setApi} className="w-full md:max-w-[212px]">
           <div
-            onClick={() => setIsFavorite((prev) => !prev)}
+            onClick={() => setIsFavorite(prev => !prev)}
             className={
               'absolute top-2 right-2 z-10 w-[30px] cursor-pointer hover:opacity-80 transition-opacity duration-300'
             }
@@ -56,7 +56,10 @@ export const HotelCard = ({
           </div>
           <CarouselContent>
             {data?.images?.map((image: string, index: number) => (
-              <CarouselItem key={index} className="user-select-none overflow-hidden p-0">
+              <CarouselItem
+                key={index}
+                className="user-select-none overflow-hidden p-0"
+              >
                 <img
                   src={image}
                   alt="Hotel"

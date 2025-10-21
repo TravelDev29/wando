@@ -10,22 +10,22 @@ const { execSync } = require('child_process');
 function quickValidate() {
   try {
     console.log('🔍 Quick validation (TypeScript + Linting)...');
-    
+
     // Check TypeScript compilation
-    const tscResult = execSync('npx tsc --noEmit', { 
-      encoding: 'utf8', 
+    const tscResult = execSync('npx tsc --noEmit', {
+      encoding: 'utf8',
       stdio: 'pipe',
-      cwd: process.cwd()
+      cwd: process.cwd(),
     });
-    
+
     console.log('✅ TypeScript validation passed');
-    
+
     // Check linting (quick)
     try {
-      const lintResult = execSync('npm run lint -- --max-warnings 0', { 
-        encoding: 'utf8', 
+      const lintResult = execSync('npm run lint -- --max-warnings 0', {
+        encoding: 'utf8',
         stdio: 'pipe',
-        cwd: process.cwd()
+        cwd: process.cwd(),
       });
       console.log('✅ Linting validation passed');
     } catch (lintError) {
@@ -37,9 +37,8 @@ function quickValidate() {
       }
       console.log('✅ Linting validation passed (warnings acceptable)');
     }
-    
+
     return true;
-    
   } catch (error) {
     const output = error.stdout ? error.stdout.toString() : '';
     console.log('❌ Quick validation failed');

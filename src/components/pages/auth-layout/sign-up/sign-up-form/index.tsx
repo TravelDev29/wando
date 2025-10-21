@@ -24,7 +24,7 @@ const signUpSchema = z.object({
 
 export const SignUpForm = () => {
   const router = useRouter();
-   const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const form = useForm<z.infer<typeof signUpSchema>>({
     resolver: zodResolver(signUpSchema),
@@ -68,10 +68,10 @@ export const SignUpForm = () => {
             <FormItem>
               <FormLabel>Password</FormLabel>
               <FormControl>
-               <div className="relative">
+                <div className="relative">
                   <Input
                     placeholder="enter your password eg. Password"
-                    type={showPassword ? "text" : "password"}
+                    type={showPassword ? 'text' : 'password'}
                     {...field}
                   />
                   <Button
@@ -114,7 +114,11 @@ export const SignUpForm = () => {
           Google
         </Button>
         <Button variant="secondary" className="flex-1">
-          <img src="/images/apple-logo.svg" alt="Apple" className="w-4 h-4 invert dark:brightness-0" />
+          <img
+            src="/images/apple-logo.svg"
+            alt="Apple"
+            className="w-4 h-4 invert dark:brightness-0"
+          />
           Apple
         </Button>
       </div>

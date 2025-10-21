@@ -7,7 +7,7 @@ export const ThemeSelector = () => {
 
   return (
     <div className="flex gap-4 overflow-x-auto p-2">
-      {themes.map((t) => (
+      {themes.map(t => (
         <div key={t.value} className="flex flex-col gap-2">
           <Button
             key={t.value}

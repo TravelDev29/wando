@@ -82,7 +82,11 @@ export const Navbar: React.FC = () => {
         {/* Profile */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button className="relative rounded-full w-11 h-11" variant="ghost" size="icon">
+            <Button
+              className="relative rounded-full w-11 h-11"
+              variant="ghost"
+              size="icon"
+            >
               <Avatar className="rounded-full w-11 h-11">
                 <AvatarImage src="/images/avatar-content.jpg" />
               </Avatar>
@@ -98,7 +102,10 @@ export const Navbar: React.FC = () => {
             sideOffset={10}
           >
             <DropdownMenuLabel className="flex items-start gap-3 p-0">
-              <Link href="/profile" className="w-full hover:bg-card active:bg-card transition-colors rounded-lg">
+              <Link
+                href="/profile"
+                className="w-full hover:bg-card active:bg-card transition-colors rounded-lg"
+              >
                 <div className="flex p-3">
                   <span className="text-foreground truncate text-sm font-medium">
                     Alex Johnson
@@ -108,37 +115,55 @@ export const Navbar: React.FC = () => {
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem className="p-0 transition-all overflow-hidden rounded-lg">
-              <Link href="/profile" className="flex items-center px-3 py-2 gap-3 w-full">
+              <Link
+                href="/profile"
+                className="flex items-center px-3 py-2 gap-3 w-full"
+              >
                 <Settings className="w-4 h-4" />
                 Account Settings
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem className="p-0 transition-all overflow-hidden rounded-lg">
-              <span className="flex items-center px-3 py-2 gap-3 w-full cursor-pointer" onClick={() => setInviteOpen(true)}>
+              <span
+                className="flex items-center px-3 py-2 gap-3 w-full cursor-pointer"
+                onClick={() => setInviteOpen(true)}
+              >
                 <UserPlus className="w-4 h-4" />
                 Invite Friends
               </span>
             </DropdownMenuItem>
             <DropdownMenuItem className="p-0 transition-all overflow-hidden rounded-lg">
-              <Link href="/learn" className="flex items-center px-3 py-2 gap-3 w-full">
+              <Link
+                href="/learn"
+                className="flex items-center px-3 py-2 gap-3 w-full"
+              >
                 <BookOpen className="w-4 h-4" />
                 Learn
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem className="p-0 transition-all overflow-hidden rounded-lg">
-              <span className="flex items-center px-3 py-2 gap-3 w-full cursor-pointer" onClick={() => setOpen(true)}>
-              <MessageSquareText className="w-4 h-4" />
+              <span
+                className="flex items-center px-3 py-2 gap-3 w-full cursor-pointer"
+                onClick={() => setOpen(true)}
+              >
+                <MessageSquareText className="w-4 h-4" />
                 Feedback
               </span>
             </DropdownMenuItem>
             <DropdownMenuItem className="p-0 transition-all overflow-hidden rounded-lg">
-              <Link href="/support" className="flex items-center px-3 py-2 gap-3 w-full">
+              <Link
+                href="/support"
+                className="flex items-center px-3 py-2 gap-3 w-full"
+              >
                 <CircleHelp className="w-4 h-4" />
                 Support
               </Link>
             </DropdownMenuItem>
-            <DropdownMenuItem className='p-0 transition-all overflow-hidden rounded-lg'>
-              <Link href="/login" className="flex items-center px-3 py-2 gap-3 w-full">
+            <DropdownMenuItem className="p-0 transition-all overflow-hidden rounded-lg">
+              <Link
+                href="/login"
+                className="flex items-center px-3 py-2 gap-3 w-full"
+              >
                 <LogOut className="w-4 h-4" />
                 Logout
               </Link>

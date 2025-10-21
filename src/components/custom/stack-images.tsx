@@ -37,7 +37,7 @@ export const StackImages = ({
         />
         {hasFavorite && (
           <div
-            onClick={() => setIsFavorite((prev) => !prev)}
+            onClick={() => setIsFavorite(prev => !prev)}
             className={
               'absolute top-2 right-2 z-10 w-[30px] cursor-pointer hover:opacity-80 transition-opacity duration-300'
             }

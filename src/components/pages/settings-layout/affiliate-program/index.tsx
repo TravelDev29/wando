@@ -156,7 +156,7 @@ export const AffiliateProgram = () => {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {myReferrals.map((invoice) => (
+                {myReferrals.map(invoice => (
                   <TableRow key={invoice.id}>
                     <TableCell>{invoice.date}</TableCell>
                     <TableCell>{invoice.user}</TableCell>
@@ -354,7 +354,7 @@ export const AffiliateProgram = () => {
               </AccordionItem>
               <AccordionItem value="item-2">
                 <AccordionTrigger className="text-foreground/70 text-base font-normal leading-5">
-                  Why is my payout "Pending"?
+                  Why is my payout &quot;Pending&quot;?
                 </AccordionTrigger>
                 <AccordionContent></AccordionContent>
               </AccordionItem>
