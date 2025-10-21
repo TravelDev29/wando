@@ -11,6 +11,11 @@ The system automatically creates Git commits and tags when:
 - App builds without errors after significant changes
 
 ## Checkpoints
+## ROLLBACK (10/21/2025, 06:36:41 PM)
+- **Rolled back to**: v0.6-auto
+- **Reason**: Manual rollback
+- **Current state**: `git checkout v0.6-auto`
+
 ## ROLLBACK (10/21/2025, 06:31:18 PM)
 - **Rolled back to**: v0.2-auto
 - **Reason**: Build validation failed
@@ -34,6 +39,11 @@ The system automatically creates Git commits and tags when:
 
 ## v0.1-auto (10/21/2025, 06:22:35 PM)
 ## v0.2-auto (10/21/2025, 06:29:56 PM)
+## v0.6-auto (10/21/2025, 06:36:30 PM)
+- **Description**: Short note about whats stable
+- **Commit Hash**: f5c4d6d039fd2dd3c02e461636c9d77898c7ebc2
+- **Rollback**: `git checkout v0.6-auto`
+
 - **Description**: Checkpoint and rollback workflow improvements
 - **Commit Hash**: 022cec6d5bfc5a9514feb8159ddab540cf8dd63d
 - **Rollback**: `git checkout v0.2-auto`

@@ -10,7 +10,9 @@
     "logs": "next dev & timeout 3 && curl -s http://localhost:3000/api/_logs | node -e \"process.stdin.on('data', d => console.log(JSON.stringify(JSON.parse(d.toString()), null, 2)))\"",
     "checkpoint": "node scripts/auto-checkpoint.js",
     "rollback": "node scripts/auto-rollback.js",
-    "validate": "node scripts/auto-rollback.js --validate"
+    "validate": "node scripts/auto-rollback.js --validate",
+    "clean": "rimraf .next && rimraf node_modules && npm i",
+    "preview": "next build && next start -p 4000"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
