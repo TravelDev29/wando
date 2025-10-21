@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "logs": "next dev & timeout 3 && curl -s http://localhost:3000/api/_logs | node -e \"process.stdin.on('data', d => console.log(JSON.stringify(JSON.parse(d.toString()), null, 2)))\""
+    "logs": "next dev & timeout 3 && curl -s http://localhost:3000/api/_logs | node -e \"process.stdin.on('data', d => console.log(JSON.stringify(JSON.parse(d.toString()), null, 2)))\"",
+    "checkpoint": "node scripts/auto-checkpoint.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
