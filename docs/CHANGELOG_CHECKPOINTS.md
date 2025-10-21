@@ -5,43 +5,60 @@ This file tracks automatic checkpoints created during development when major cha
 ## Checkpoint System
 
 The system automatically creates Git commits and tags when:
+
 - Major refactors are completed
 - Migrations are finished
 - Large feature sets are added
 - App builds without errors after significant changes
 
 ## Checkpoints
+
 ## ROLLBACK (10/21/2025, 06:36:41 PM)
+
 - **Rolled back to**: v0.6-auto
 - **Reason**: Manual rollback
 - **Current state**: `git checkout v0.6-auto`
 
 ## ROLLBACK (10/21/2025, 06:31:18 PM)
+
 - **Rolled back to**: v0.2-auto
 - **Reason**: Build validation failed
 - **Current state**: `git checkout v0.2-auto`
 
 ## ROLLBACK (10/21/2025, 06:30:39 PM)
+
 - **Rolled back to**: v0.2-auto
 - **Reason**: Build validation failed
 - **Current state**: `git checkout v0.2-auto`
 
 ## ROLLBACK (10/21/2025, 06:30:15 PM)
+
 - **Rolled back to**: v0.2-auto
 - **Reason**: Build validation failed
 - **Current state**: `git checkout v0.2-auto`
 
 ## ROLLBACK (10/21/2025, 06:28:41 PM)
+
 - **Rolled back to**: v0.1-auto
 - **Reason**: Build validation failed
 - **Current state**: `git checkout v0.1-auto`
 
-
 ## v0.1-auto (10/21/2025, 06:22:35 PM)
+
 ## v0.2-auto (10/21/2025, 06:29:56 PM)
+
 ## v0.6-auto (10/21/2025, 06:36:30 PM)
+
 ## v0.7-auto (10/21/2025, 06:49:37 PM)
+
 ## v0.8-auto (10/21/2025, 07:00:25 PM)
+
+## v0.9-auto (10/21/2025, 07:05:23 PM)
+
+- **Description**: Verification pass
+- **Commit Hash**: 28d7bf3c4f5d2fdcc9d8d614477d519830346e5d
+- **Rollback**: `git checkout v0.9-auto`
+
 - **Description**: Repo hygiene: PR template + contributing docs
 - **Commit Hash**: 4774f684ce50e8230b7e6c9988c80179c0f1e2c4
 - **Rollback**: `git checkout v0.8-auto`
@@ -67,11 +84,13 @@ The system automatically creates Git commits and tags when:
 ## Usage
 
 To roll back to any checkpoint:
+
 ```bash
 git checkout v0.[tag-number]-auto
 ```
 
 To see all available checkpoints:
+
 ```bash
 git tag -l "*auto"
 ```

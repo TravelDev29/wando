@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 type LogLevel = 'debug' | 'info' | 'warn' | 'error';
 
@@ -21,11 +21,23 @@ class Logger {
 
   private getRequestId(): string | undefined {
     if (typeof window === 'undefined') return undefined;
-    // Try to get request ID from headers or context
-    return (window as Record<string, unknown>).__REQUEST_ID__ as string || document.querySelector('meta[name="x-request-id"]')?.getAttribute('content');
+
+    // Try to get request ID from window context
+    const windowWithRequestId = window as Window & { __REQUEST_ID__?: string };
+    const requestIdFromWindow = windowWithRequestId.__REQUEST_ID__;
+
+    // Try to get request ID from meta tag
+    const metaElement = document.querySelector('meta[name="x-request-id"]');
+    const requestIdFromMeta = metaElement?.getAttribute('content') || null;
+
+    return requestIdFromWindow || requestIdFromMeta || undefined;
   }
 
-  private formatMessage(level: LogLevel, message: string, context?: Record<string, unknown>): string {
+  private formatMessage(
+    level: LogLevel,
+    message: string,
+    context?: Record<string, unknown>
+  ): string {
     const timestamp = this.getTimestamp();
     const requestId = this.getRequestId();
     const prefix = `[${timestamp}] [${level.toUpperCase()}]`;
@@ -37,8 +49,8 @@ class Logger {
   private getColor(level: LogLevel): string {
     const colors = {
       debug: '\x1b[36m', // cyan
-      info: '\x1b[32m',  // green
-      warn: '\x1b[33m',  // yellow
+      info: '\x1b[32m', // green
+      warn: '\x1b[33m', // yellow
       error: '\x1b[31m', // red
     };
     return colors[level];
@@ -46,16 +58,25 @@ class Logger {
 
   private resetColor = '\x1b[0m';
 
-  private logToConsole(level: LogLevel, message: string, context?: Record<string, unknown>): void {
+  private logToConsole(
+    level: LogLevel,
+    message: string,
+    context?: Record<string, unknown>
+  ): void {
     if (!this.isDev) return;
 
     const formattedMessage = this.formatMessage(level, message, context);
     const color = this.getColor(level);
-    
+
     console.log(`${color}${formattedMessage}${this.resetColor}`);
   }
 
-  private async logToAPI(level: LogLevel, message: string, stack?: string, context?: Record<string, unknown>): Promise<void> {
+  private async logToAPI(
+    level: LogLevel,
+    message: string,
+    stack?: string,
+    context?: Record<string, unknown>
+  ): Promise<void> {
     if (!this.isDev) return;
 
     try {
@@ -97,7 +118,11 @@ class Logger {
     this.logToAPI('warn', message, undefined, context);
   }
 
-  error(message: string, stack?: string, context?: Record<string, unknown>): void {
+  error(
+    message: string,
+    stack?: string,
+    context?: Record<string, unknown>
+  ): void {
     this.logToConsole('error', message, context);
     this.logToAPI('error', message, stack, context);
   }
@@ -105,15 +130,30 @@ class Logger {
 
 export const logger = new Logger();
 
-export function logClientError(err: unknown, context?: Record<string, unknown>): void {
+export function logClientError(
+  err: unknown,
+  context?: Record<string, unknown>
+): void {
   const error = err instanceof Error ? err : new Error(String(err));
   const stack = error.stack;
   const message = error.message || 'Unknown error';
-  
+
+  // Safely get client-side information
+  const clientInfo: Record<string, unknown> = {
+    errorType: error.constructor.name,
+  };
+
+  if (typeof window !== 'undefined') {
+    clientInfo.userAgent = window.navigator.userAgent;
+    clientInfo.url = window.location.href;
+  } else {
+    // Server-side fallbacks
+    clientInfo.userAgent = 'server-side';
+    clientInfo.url = 'server-side';
+  }
+
   logger.error(message, stack, {
     ...context,
-    errorType: error.constructor.name,
-    userAgent: typeof window !== 'undefined' ? window.navigator.userAgent : undefined,
-    url: typeof window !== 'undefined' ? window.location.href : undefined,
+    ...clientInfo,
   });
 }
