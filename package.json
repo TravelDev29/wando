@@ -11,8 +11,11 @@
     "checkpoint": "node scripts/auto-checkpoint.js",
     "rollback": "node scripts/auto-rollback.js",
     "validate": "node scripts/auto-rollback.js --validate",
+    "quick-validate": "node scripts/quick-validate.js",
     "clean": "rimraf .next && rimraf node_modules && npm i",
-    "preview": "next build && next start -p 4000"
+    "preview": "next build && next start -p 4000",
+    "setup-cursor": "node scripts/setup-cursor-integration.js",
+    "cursor-analyze": "node .cursor/tasks/checkpoint-monitor.js --analyze"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

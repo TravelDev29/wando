@@ -40,6 +40,11 @@ The system automatically creates Git commits and tags when:
 ## v0.1-auto (10/21/2025, 06:22:35 PM)
 ## v0.2-auto (10/21/2025, 06:29:56 PM)
 ## v0.6-auto (10/21/2025, 06:36:30 PM)
+## v0.7-auto (10/21/2025, 06:49:37 PM)
+- **Description**: Dev polish: env template, VSCode settings, scripts, gitattributes
+- **Commit Hash**: 50d3257660f222f34eb3cc69e61d987600e28ec2
+- **Rollback**: `git checkout v0.7-auto`
+
 - **Description**: Short note about whats stable
 - **Commit Hash**: f5c4d6d039fd2dd3c02e461636c9d77898c7ebc2
 - **Rollback**: `git checkout v0.6-auto`
