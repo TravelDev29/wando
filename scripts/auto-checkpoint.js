@@ -9,10 +9,16 @@ const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
+// Configure Git to be quiet
+const GIT_OPTIONS = { 
+  encoding: 'utf8',
+  stdio: 'pipe' // Suppress output unless needed
+};
+
 // Get the next version number
 function getNextVersion() {
   try {
-    const tags = execSync('git tag -l "*auto"', { encoding: 'utf8' });
+    const tags = execSync('git tag -l "*auto"', GIT_OPTIONS);
     const autoTags = tags.trim().split('\n').filter(tag => tag.includes('-auto'));
     
     if (autoTags.length === 0) return 1;
@@ -44,34 +50,51 @@ function getLocalTimestamp() {
 // Get commit hash
 function getCommitHash() {
   try {
-    return execSync('git rev-parse HEAD', { encoding: 'utf8' }).trim();
+    return execSync('git rev-parse HEAD', GIT_OPTIONS).trim();
   } catch (error) {
     return 'unknown';
+  }
+}
+
+// Check if there are any changes to commit
+function hasChanges() {
+  try {
+    const status = execSync('git status --porcelain', GIT_OPTIONS);
+    return status.trim().length > 0;
+  } catch (error) {
+    return false;
   }
 }
 
 // Main checkpoint function
 function createCheckpoint(description) {
   try {
+    // Check if there are changes to commit
+    if (!hasChanges()) {
+      console.log('ℹ️  No changes to commit. Skipping checkpoint creation.');
+      return { success: true, tagName: null, commitHash: null, skipped: true };
+    }
+
     const version = getNextVersion();
     const tagName = `v0.${version}-auto`;
     const timestamp = getLocalTimestamp();
     
     console.log(`🔄 Creating auto checkpoint: ${tagName}`);
     
-    // Add all changes
-    execSync('git add .', { stdio: 'inherit' });
+    // Add all changes (quiet)
+    execSync('git add .', GIT_OPTIONS);
     
-    // Create commit
+    // Create commit (quiet)
     const commitMessage = `Auto-checkpoint: ${description}`;
-    execSync(`git commit -m "${commitMessage}"`, { stdio: 'inherit' });
+    execSync(`git commit -m "${commitMessage}"`, GIT_OPTIONS);
     
-    // Create tag
-    execSync(`git tag -a ${tagName} -m "Auto checkpoint after ${description}"`, { stdio: 'inherit' });
+    // Create tag (quiet)
+    execSync(`git tag -a ${tagName} -m "Auto checkpoint after ${description}"`, GIT_OPTIONS);
     
-    // Push changes
-    execSync('git push', { stdio: 'inherit' });
-    execSync(`git push origin ${tagName}`, { stdio: 'inherit' });
+    // Push changes (show output for push operations)
+    console.log('📤 Pushing to remote...');
+    execSync('git push', { encoding: 'utf8', stdio: 'inherit' });
+    execSync(`git push origin ${tagName}`, { encoding: 'utf8', stdio: 'inherit' });
     
     // Get commit hash
     const commitHash = getCommitHash();
@@ -107,7 +130,7 @@ function createCheckpoint(description) {
     console.log(`🔗 Commit: ${commitHash}`);
     console.log(`⏪ Roll back anytime with: git checkout ${tagName}`);
     
-    return { success: true, tagName, commitHash };
+    return { success: true, tagName, commitHash, skipped: false };
     
   } catch (error) {
     console.error('❌ Error creating auto checkpoint:', error.message);
