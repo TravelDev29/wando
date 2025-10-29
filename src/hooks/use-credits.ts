@@ -13,11 +13,20 @@ import type { CreditsProvider } from '@/lib/credits/types';
  *
  * @example
  * ```tsx
+ * const { balance } = useCredits();
  * const credits = useCredits();
- * const balance = credits.getBalance();
  * await credits.deduct(10, 'trip_generation');
  * ```
  */
-export function useCredits(): CreditsProvider {
-  return mockCreditsProvider;
+export function useCredits(): CreditsProvider & { balance: number | null } {
+  const provider = mockCreditsProvider;
+  return Object.assign(provider, {
+    get balance(): number | null {
+      try {
+        return provider.getBalance();
+      } catch {
+        return null;
+      }
+    },
+  }) as CreditsProvider & { balance: number | null };
 }

@@ -25,6 +25,8 @@ import FeedbackModal from '@/components/pages/app-layout/feedback/feedback-modal
 import { Button } from '../ui/button';
 import { useInviteModal } from '@/components/pages/app-layout/invite/hooks/use-invite-modal-store';
 import { InviteModal } from '@/components/pages/app-layout/invite/invite-modal';
+import { useCredits } from '@/hooks/use-credits';
+import { Tag } from '../custom/tag';
 
 export const Navbar: React.FC = () => {
   const pathname = usePathname();
@@ -35,6 +37,7 @@ export const Navbar: React.FC = () => {
 
   const { setOpen } = useFeedbackModal();
   const { setOpen: setInviteOpen } = useInviteModal();
+  const { balance } = useCredits();
   return (
     <>
       <nav className="max-h-[60px] lg:max-h-[460px] lg:max-w-[60px] h-full flex flex-row lg:flex-col items-center justify-between rounded-full bg-card p-2 backdrop-blur-md shadow-2 gap-4">
@@ -79,6 +82,24 @@ export const Navbar: React.FC = () => {
             <img src="/icons/heart.svg" alt="Saved" className="w-5 h-5" />
           </Link>
         </div>
+        {/* Credits Badge */}
+        {balance === null ? (
+          <Tag
+            small
+            className="bg-foreground/10 text-foreground/60"
+            aria-label="Loading credit balance"
+          >
+            …
+          </Tag>
+        ) : (
+          <Tag
+            small
+            className="bg-primary/10 text-primary"
+            aria-label={`Credit balance: ${balance}`}
+          >
+            {balance} credits
+          </Tag>
+        )}
         {/* Profile */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
